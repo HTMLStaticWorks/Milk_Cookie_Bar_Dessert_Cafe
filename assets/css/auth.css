@@ -39,22 +39,18 @@ body {
 /* Layout */
 .auth-wrapper {
     display: flex;
+    justify-content: center;
+    align-items: center;
     min-height: 100vh;
     width: 100%;
 }
 
 .auth-left {
-    flex: 1;
-    background: linear-gradient(135deg, #5A3825 0%, #8B5E3C 100%);
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: none;
 }
 
 .auth-right {
-    flex: 1;
+    flex: 0 1 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -72,15 +68,28 @@ body {
 }
 
 @keyframes float {
-    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-    10% { opacity: 0.2; }
-    90% { opacity: 0.2; }
-    100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.2;
+    }
+
+    90% {
+        opacity: 0.2;
+    }
+
+    100% {
+        transform: translateY(-20vh) rotate(360deg);
+        opacity: 0;
+    }
 }
 
 /* Controls */
 .top-controls {
-    position: absolute;
+    position: fixed;
     top: 1.5rem;
     right: 1.5rem;
     display: flex;
@@ -94,9 +103,9 @@ body {
 }
 
 .control-btn {
+    width: 40px;
     height: 40px;
-    padding: 0 1rem;
-    border-radius: 8px;
+    border-radius: 50%;
     border: 1px solid var(--input-border);
     background: var(--input-bg);
     color: var(--text-dark);
@@ -104,15 +113,13 @@ body {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    font-weight: 600;
-    font-size: 0.875rem;
     transition: var(--transition-base);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 .control-btn:hover {
     background: var(--primary-color);
-    color: var(--btn-text);
+    color: #F6E7D8;
     border-color: var(--primary-color);
 }
 
@@ -123,23 +130,36 @@ body {
     padding: 3rem;
     background: var(--card-bg);
     border-radius: 24px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     transition: var(--transition-base);
 }
 
-.auth-logo {
-    display: block;
-    margin: 0 auto 1.5rem;
-    width: 48px;
-    height: 48px;
-    fill: var(--primary-color);
+.navbar-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #5A3825 !important;
+    text-decoration: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+    letter-spacing: -0.5px;
 }
 
-.brand-name {
-    font-size: 2rem;
-    color: var(--primary-color);
-    margin-bottom: 0.5rem;
-    text-align: center;
+[data-theme="dark"] .navbar-brand {
+    color: #F6E7D8 !important;
+}
+
+.navbar-brand svg {
+    width: 32px;
+    height: 32px;
+    fill: currentColor;
+}
+
+[dir="rtl"] .navbar-brand svg {
+    margin-right: 0;
 }
 
 .welcome-msg {
@@ -215,15 +235,20 @@ body {
 }
 
 .forgot-link {
-    color: var(--primary-color);
+    color: #D4956A;
     text-decoration: none;
     font-weight: 600;
+    transition: var(--transition-base);
+}
+
+.forgot-link:hover {
+    text-decoration: underline;
 }
 
 .auth-btn {
     width: 100%;
     height: 48px;
-    background: var(--primary-color);
+    background: #5A3825;
     color: var(--btn-text);
     border: none;
     border-radius: 12px;
@@ -302,6 +327,11 @@ body {
     color: var(--primary-color);
     text-decoration: none;
     font-weight: 700;
+    transition: var(--transition-base);
+}
+
+.footer-link a:hover {
+    text-decoration: underline;
 }
 
 /* Checkbox Style */
@@ -330,15 +360,40 @@ body {
 
 /* Responsive */
 @media (max-width: 992px) {
+    .top-controls {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        background: var(--card-bg);
+        padding: 0.25rem;
+        border-radius: 50px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        z-index: 1100;
+    }
+
     .auth-left {
         display: none;
     }
+
     .auth-right {
         width: 100%;
-        padding: 1rem;
+        padding: 5rem 1rem 2rem; 
+        align-items: flex-start;
     }
+
     .auth-card {
         box-shadow: none;
         padding: 2rem 1.5rem;
+        margin-top: 0;
     }
+}
+
+.checkbox-container a {
+    color: #D4956A !important;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.checkbox-container a:hover {
+    text-decoration: underline;
 }
