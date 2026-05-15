@@ -1,49 +1,53 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | Milk & Melt</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Playfair+Display:wght@700;900&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='%235A3825' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2a10 10 0 1 0 10 10 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1zm-1.5 5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-3 6a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm6 3.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm2-6.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="assets/css/auth.css">
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('mcb-theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
 </head>
+
 <body>
 
     <div class="top-controls">
-        <button id="rtlToggle" class="control-btn">RTL</button>
-        <button id="themeToggle" class="control-btn">
-            <svg class="theme-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
-                <path d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/>
+        <button id="rtlToggle" class="control-btn" title="Toggle RTL">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                <path d="M19 12H5M19 12l-4-4M19 12l-4 4M5 12l4-4M5 12l4 4" />
+            </svg>
+        </button>
+        <button id="themeToggle" class="control-btn" title="Toggle Theme">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                <path
+                    d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
             </svg>
         </button>
     </div>
 
     <div class="auth-wrapper">
-        <!-- Left Side: Decorative Background -->
-        <div class="auth-left">
-            <!-- Floating Cookie SVGs -->
-            <svg class="cookie-shape" style="left: 10%; width: 60px; height: 60px; animation-delay: 0s;" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1zm-1.5 5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-3 6a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm6 3.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm2-6.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"/></svg>
-            <svg class="cookie-shape" style="left: 30%; width: 40px; height: 40px; animation-delay: 5s;" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1zm-1.5 5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-3 6a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm6 3.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm2-6.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"/></svg>
-            <svg class="cookie-shape" style="left: 60%; width: 80px; height: 80px; animation-delay: 2s;" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1zm-1.5 5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-3 6a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm6 3.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm2-6.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"/></svg>
-            <svg class="cookie-shape" style="left: 80%; width: 50px; height: 50px; animation-delay: 8s;" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1zm-1.5 5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-3 6a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm6 3.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm2-6.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"/></svg>
-            
-            <div class="text-center" style="z-index: 2; color: #F6E7D8;">
-                <h1 class="font-heading" style="font-size: 3.5rem; margin-bottom: 1rem;">Indulgence Awaits</h1>
-                <p style="font-size: 1.2rem; opacity: 0.9;">Freshly baked happiness delivered to your door.</p>
-            </div>
-        </div>
+
 
         <!-- Right Side: Login Form -->
         <div class="auth-right">
             <div class="auth-card">
-                <!-- 1. SVG Cookie Icon -->
-                <svg class="auth-logo" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2a10 10 0 1 0 10 10 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1zm-1.5 5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-3 6a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm6 3.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm2-6.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"/>
-                </svg>
-
-                <!-- 2. Brand Name -->
-                <h2 class="brand-name font-heading">Milk & Melt</h2>
+                <a class="navbar-brand" href="index.html">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12 2a10 10 0 1 0 10 10 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1zm-1.5 5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-3 6a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm6 3.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm2-6.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z" />
+                    </svg>
+                    Milk & Melt
+                </a>
 
                 <!-- 3. Welcome Message -->
                 <p class="welcome-msg">Welcome back, Cookie Lover!</p>
@@ -59,10 +63,14 @@
                     <!-- 5. Password Input with Toggle -->
                     <div class="form-group">
                         <div class="input-container">
-                            <input type="password" id="loginPassword" class="auth-input" placeholder="Password" required>
+                            <input type="password" id="loginPassword" class="auth-input" placeholder="Password"
+                                required>
                             <button type="button" class="password-toggle" data-target="loginPassword">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    <path
+                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                                 </svg>
                             </button>
                         </div>
@@ -84,14 +92,35 @@
 
                     <!-- 9. Social Buttons Row -->
                     <div class="social-row">
-                        <button type="button" class="social-btn">
-                            <img src="https://www.svgrepo.com/show/475656/google-color.svg" width="20" alt="G"> Google
+                        <button type="button" class="social-btn" title="Google">
+                            <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-3.27 3.28-8.11 3.28-8.09z"
+                                    fill="#4285F4" />
+                                <path
+                                    d="M12 23c3.04 0 5.59-1 7.46-2.71l-3.57-2.77c-1.03.7-2.35 1.11-3.89 1.11-2.99 0-5.51-2.02-6.41-4.74H1.95v2.82C3.81 20.33 7.64 23 12 23z"
+                                    fill="#34A853" />
+                                <path
+                                    d="M5.59 13.89c-.24-.7-.37-1.44-.37-2.22s.13-1.52.37-2.22V6.63H1.95a10.94 10.94 0 000 10.74l3.64-2.82z"
+                                    fill="#FBBC05" />
+                                <path
+                                    d="M12 4.75c1.65 0 3.13.57 4.29 1.68l3.22-3.22C17.58 1.41 15.03 0 12 0 7.64 0 3.81 2.67 1.95 6.63l3.64 2.82c.9-2.72 3.42-4.74 6.41-4.74z"
+                                    fill="#EA4335" />
+                            </svg>
                         </button>
-                        <button type="button" class="social-btn">
-                            <img src="https://www.svgrepo.com/show/475647/facebook-color.svg" width="20" alt="f"> Facebook
+                        <button type="button" class="social-btn" title="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                                fill="#1877F2">
+                                <path
+                                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                            </svg>
                         </button>
-                        <button type="button" class="social-btn">
-                            <img src="https://www.svgrepo.com/show/512333/apple.svg" width="20" alt="🍎"> Apple
+                        <button type="button" class="social-btn" title="Apple">
+                            <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor">
+                                <path
+                                    d="M17.05 20.28c-.98.95-2.05 1.72-3.2 1.72-1.12 0-1.52-.69-2.92-.69-1.41 0-1.85.67-2.92.67-1.11 0-2.18-.75-3.21-1.74-2.11-2.02-3.7-5.71-3.7-8.63 0-4.66 2.87-7.11 5.61-7.11 1.44 0 2.81.89 3.69.89.87 0 2.45-1.06 4.13-1.06 1.76 0 4.14.9 5.48 3.51-3.43 1.45-2.88 6.38.52 7.78-.71 1.79-1.64 3.53-3.48 4.66zm-4.77-16.71c.77-1 1.3-2.38 1.3-3.57 0-.17-.02-.34-.05-.51-1.1.04-2.43.76-3.22 1.72-.7.86-1.33 2.25-1.33 3.43 0 .19.03.38.07.51.13.01.27.02.4.02.99 0 2.1-.56 2.83-1.6z" />
+                            </svg>
                         </button>
                     </div>
 
@@ -104,4 +133,5 @@
 
     <script src="assets/js/auth.js"></script>
 </body>
+
 </html>

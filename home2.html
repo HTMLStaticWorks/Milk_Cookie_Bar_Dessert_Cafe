@@ -13,12 +13,18 @@
   <link id="bootstrap-css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
     rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('mcb-theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
 </head>
 
 <body>
 
   <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg fixed-top">
+  <nav class="navbar navbar-expand-custom fixed-top">
     <div class="container-fluid px-4">
       <a class="navbar-brand" href="index.html">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -31,21 +37,23 @@
         aria-controls="mobileMenu">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title font-heading" id="mobileMenuLabel">Menu</h5>
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
           <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-            <li class="nav-item dropdown">
-              <a class="nav-link active" href="#" id="homeDropdown" role="button" data-bs-toggle="dropdown"
+            <li class="nav-item mobile-only-home"><a class="nav-link" href="index.html">Home 1</a></li>
+            <li class="nav-item mobile-only-home"><a class="nav-link active" href="home2.html">Home 2</a></li>
+            <li class="nav-item dropdown desktop-only-home">
+              <a class="nav-link dropdown-toggle" href="#" id="homeDropdown" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
                 Home
               </a>
               <ul class="dropdown-menu" aria-labelledby="homeDropdown">
                 <li><a class="dropdown-item" href="index.html">Home 1</a></li>
-                <li><a class="dropdown-item active" href="home2.html">Home 2</a></li>
+                <li><a class="dropdown-item" href="home2.html">Home 2</a></li>
               </ul>
             </li>
             <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
@@ -55,7 +63,7 @@
             <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
             <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
           </ul>
-          <div class="d-flex align-items-center flex-wrap gap-2">
+          <div class="d-flex align-items-center flex-nowrap gap-2">
             <button id="rtlToggle" class="control-btn" title="Toggle RTL">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
                 <path d="M19 12H5M19 12l-4-4M19 12l-4 4M5 12l4-4M5 12l4 4" />
@@ -110,18 +118,7 @@
       </div>
     </div>
 
-    <!-- 3-Image Strip -->
-    <div class="hero-image-strip">
-      <div class="strip-img"
-        style="background-image: url('https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=800&q=80');">
-      </div>
-      <div class="strip-img"
-        style="background-image: url('https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=800&q=80');">
-      </div>
-      <div class="strip-img"
-        style="background-image: url('https://images.unsplash.com/photo-1621236378699-8597faf6a176?auto=format&fit=crop&w=800&q=80'); border-right: none;">
-      </div>
-    </div>
+
   </section>
 
   <!-- 2. PHILOSOPHY BLOCK -->
@@ -198,9 +195,9 @@
         </div>
         <div class="col-lg-7">
           <form class="d-flex flex-column flex-md-row gap-3">
-            <input type="text" class="form-control bg-transparent text-white" placeholder="Name"
+            <input type="text" class="form-control form-control-dark bg-transparent text-white" placeholder="Name"
               style="border-color: #3D2618;">
-            <input type="datetime-local" class="form-control bg-transparent text-white"
+            <input type="datetime-local" class="form-control form-control-dark bg-transparent text-white"
               style="border-color: #3D2618; color-scheme: dark;">
             <button type="button" class="btn btn-brand-primary text-nowrap px-4">Start My Order</button>
           </form>
@@ -215,8 +212,7 @@
       <h2 class="display-4 mb-5">Design Your Perfect Flight</h2>
 
       <div class="row g-4">
-        <!-- Step 1 -->
-        <div class="col-md-4">
+        <div class="col-12 col-md-12 col-lg-4">
           <div class="flight-builder-step">
             <div class="display-3 mb-3 text-accent">🥛</div>
             <h4>1. Choose Milk Base</h4>
@@ -230,7 +226,7 @@
         </div>
 
         <!-- Step 2 -->
-        <div class="col-md-4">
+        <div class="col-12 col-md-12 col-lg-4">
           <div class="flight-builder-step">
             <div class="display-3 mb-3 text-accent">🍪</div>
             <h4>2. Select Cookies</h4>
@@ -245,7 +241,7 @@
         </div>
 
         <!-- Step 3 -->
-        <div class="col-md-4">
+        <div class="col-12 col-md-12 col-lg-4">
           <div class="flight-builder-step">
             <div class="display-3 mb-3 text-accent">🍯</div>
             <h4>3. Pick 3 Sauces</h4>
@@ -269,7 +265,7 @@
   <section class="section-padding">
     <div class="container">
       <div class="row g-4">
-        <div class="col-lg-4">
+        <div class="col-12 col-md-12 col-lg-4">
           <div class="seasonal-card">
             <div class="seasonal-card-bg">
               <img src="https://images.unsplash.com/photo-1514316454349-750a7fd3da3a?auto=format&fit=crop&w=600&q=80"
@@ -278,12 +274,12 @@
             <div class="seasonal-card-content flex-column">
               <h3 class="font-heading mb-2">Valentine's Day Box</h3>
               <p class="small mb-3">Red velvet, dark chocolate, and strawberry dipping sauce.</p>
-              <a href="#" class="btn btn-sm btn-outline-light mt-auto">Order Special</a>
+              <a href="#" class="btn btn-premium-editorial">Order Special</a>
             </div>
           </div>
         </div>
 
-        <div class="col-lg-4">
+        <div class="col-12 col-md-12 col-lg-4">
           <div class="seasonal-card">
             <div class="seasonal-card-bg">
               <img src="https://images.unsplash.com/photo-1607532941433-304659e8198a?auto=format&fit=crop&w=600&q=80"
@@ -292,12 +288,12 @@
             <div class="seasonal-card-content flex-column">
               <h3 class="font-heading mb-2">Holiday Cookie Tower</h3>
               <p class="small mb-3">Gingerbread, peppermint mocha, and eggnog milk flight.</p>
-              <a href="#" class="btn btn-sm btn-outline-light mt-auto">Order Special</a>
+              <a href="#" class="btn btn-premium-editorial">Order Special</a>
             </div>
           </div>
         </div>
 
-        <div class="col-lg-4">
+        <div class="col-12 col-md-12 col-lg-4">
           <div class="seasonal-card">
             <div class="seasonal-card-bg">
               <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=600&q=80"
@@ -306,7 +302,7 @@
             <div class="seasonal-card-content flex-column">
               <h3 class="font-heading mb-2">Birthday Bundle</h3>
               <p class="small mb-3">Funfetti sugar cookies, candle sparklers, and marshmallow fluff.</p>
-              <a href="#" class="btn btn-sm btn-outline-light mt-auto">Order Special</a>
+              <a href="#" class="btn btn-premium-editorial">Order Special</a>
             </div>
           </div>
         </div>
@@ -333,7 +329,7 @@
   <footer class="site-footer mt-0 border-top" style="border-color: #3D2618 !important;">
     <div class="container">
       <div class="row gy-4">
-        <div class="col-lg-4 pe-lg-5">
+        <div class="col-12 col-md-6 col-lg-6 col-xl-4 pe-lg-5">
           <a href="index.html" class="footer-brand">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -354,6 +350,16 @@
                 <path
                   d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
               </svg></a>
+            <a href="#" aria-label="X"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" viewBox="0 0 16 16">
+                <path
+                  d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.6.75zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633z" />
+              </svg></a>
+            <a href="#" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                <path
+                  d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+              </svg></a>
             <a href="#" aria-label="TikTok"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                 fill="currentColor" class="bi bi-tiktok" viewBox="0 0 16 16">
                 <path
@@ -361,7 +367,8 @@
               </svg></a>
           </div>
         </div>
-        <div class="col-lg-2 col-6">
+        <!-- Menu -->
+        <div class="col-12 col-md-6 col-lg-6 col-xl-2">
           <h5>Menu</h5>
           <ul>
             <li><a href="signature-cookies.html">Signature Cookies</a></li>
@@ -370,7 +377,8 @@
             <li><a href="pricing.html">Catering</a></li>
           </ul>
         </div>
-        <div class="col-lg-2 col-6">
+        <!-- Company -->
+        <div class="col-12 col-md-6 col-lg-6 col-xl-2">
           <h5>Company</h5>
           <ul>
             <li><a href="about.html">Our Story</a></li>
@@ -379,7 +387,8 @@
             <li><a href="contact.html">Contact Us</a></li>
           </ul>
         </div>
-        <div class="col-lg-4">
+        <!-- Newsletter -->
+        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
           <h5>Join the Club</h5>
           <p>Subscribe for sweet updates, secret menu items, and 10% off your first order.</p>
           <form class="newsletter-form d-flex gap-2 mt-3">
@@ -389,7 +398,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        &copy; 2025 Milk & Melt. Made with love 🍪
+        &copy; 2026 Milk & Melt. Made with love 🍪
       </div>
     </div>
   </footer>
