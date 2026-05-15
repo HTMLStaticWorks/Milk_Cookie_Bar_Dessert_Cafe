@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Our Journey | Milk & Melt</title>
+  <meta name="description"
+    content="Discover the story behind Milk & Cookie Bar. From our humble beginnings to our passion for artisan baking and wholesome ingredients.">
+
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='%235A3825' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2a10 10 0 1 0 10 10 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1zm-1.5 5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-3 6a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm6 3.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm2-6.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z'/%3E%3C/svg%3E">
+  <link id="bootstrap-css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    .breadcrumb-custom {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--mcb-text-muted);
+    }
+
+    .breadcrumb-custom a {
+      color: var(--mcb-text-muted);
+    }
+
+    .breadcrumb-custom span {
+      opacity: 0.5;
+    }
+
+    /* STORY SECTION */
+    .story-image-wrap {
+      height: 600px;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .highlight-quote {
+      font-size: 1.5rem;
+      font-family: var(--mcb-font-heading);
+      color: var(--mcb-accent);
+      border-left: 4px solid var(--mcb-accent);
+      padding-left: 1.5rem;
+      margin: 2rem 0;
+      font-style: italic;
+    }
+
+    /* MISSION VALUES */
+    .value-card-about {
+      text-align: center;
+      padding: 3rem 2rem;
+      background: var(--mcb-surface);
+      border: 1px solid var(--mcb-surface-border);
+      border-radius: 20px;
+      height: 100%;
+      transition: var(--mcb-transition);
+    }
+
+    .value-card-about:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    .value-icon-lg {
+      width: 100px;
+      height: 100px;
+      background: var(--mcb-secondary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--mcb-primary);
+      margin: 0 auto 2rem;
+    }
+
+    /* TIMELINE */
+    .timeline-container {
+      position: relative;
+      padding: 4rem 0;
+    }
+
+    .timeline-line {
+      position: absolute;
+      top: 70px;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      border-top: 2px dashed var(--mcb-surface-border);
+      z-index: 0;
+    }
+
+    .timeline-step {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-circle-lg {
+      width: 80px;
+      height: 80px;
+      background: var(--mcb-primary);
+      color: var(--mcb-secondary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mcb-font-heading);
+      font-size: 1.8rem;
+      margin: 0 auto 1.5rem;
+      border: 6px solid var(--mcb-bg-color);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .step-img-placeholder {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 16px;
+      background: #eee;
+      margin-top: 1.5rem;
+      overflow: hidden;
+    }
+
+    /* TEAM CARDS */
+    .team-card-about {
+      background: var(--mcb-surface);
+      border: 1px solid var(--mcb-surface-border);
+      border-radius: 20px;
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      transition: var(--mcb-transition);
+      height: 100%;
+    }
+
+    .team-card-about:hover {
+      border-color: var(--mcb-accent);
+      transform: translateY(-8px);
+    }
+
+    .team-avatar-lg {
+      width: 120px;
+      height: 120px;
+      background: var(--mcb-primary);
+      color: var(--mcb-secondary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mcb-font-heading);
+      font-size: 2.5rem;
+      margin: 0 auto 1.5rem;
+    }
+
+    /* INGREDIENT BADGES */
+    .ingredient-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50px;
+      color: #fff;
+      margin: 0.5rem;
+      font-weight: 600;
+      transition: var(--mcb-transition);
+    }
+
+    .ingredient-badge:hover {
+      background: var(--mcb-accent);
+      border-color: var(--mcb-accent);
+      transform: scale(1.05);
+    }
+
+    /* RTL Tweak */
+    [dir="rtl"] .highlight-quote {
+      border-left: none;
+      border-right: 4px solid var(--mcb-accent);
+      padding-left: 0;
+      padding-right: 1.5rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand" href="index.html">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M12 2a10 10 0 1 0 10 10 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1zm-1.5 5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-3 6a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm6 3.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm2-6.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z" />
+        </svg>
+        Milk & Melt
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu"
+        aria-controls="mobileMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title font-heading" id="mobileMenuLabel">Menu</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="#" id="homeDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Home
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="homeDropdown">
+                <li><a class="dropdown-item" href="index.html">Home 1</a></li>
+                <li><a class="dropdown-item" href="home2.html">Home 2</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="menu.html">Menus</a></li>
+            <li class="nav-item"><a class="nav-link" href="signature-cookies.html">Signature Cookies</a></li>
+            <li class="nav-item"><a class="nav-link" href="milkshakes.html">Milkshakes</a></li>
+            <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          </ul>
+          <div class="d-flex align-items-center flex-wrap gap-2">
+            <button id="rtlToggle" class="control-btn" title="Toggle RTL">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                <path d="M19 12H5M19 12l-4-4M19 12l-4 4M5 12l4-4M5 12l4 4" />
+              </svg>
+            </button>
+            <button id="themeToggle" class="control-btn" title="Toggle Theme">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                <path
+                  d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+              </svg>
+            </button>
+            <a href="signup.html" class="btn btn-brand-outline ms-lg-2">Sign Up</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 1. PAGE HERO -->
+  <header class="about-hero">
+    <div class="container">
+      <h1 class="display-3 mb-2">Our Sweet Story</h1>
+      <p class="lead mb-0">Discover the passion behind every bite and the journey</p>
+      <p class="lead">that brought us to your neighborhood.</p>
+    </div>
+  </header>
+
+  <!-- 2. FOUNDING STORY -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6">
+          <div class="story-image-wrap">
+            <img src="assets/images/about-story.png" alt="Our Founders" class="w-100 h-100 object-fit-cover">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <span class="text-accent text-uppercase tracking-widest fw-bold small">Est. 2018</span>
+          <h2 class="display-5 mt-2 mb-4">Born From a Love of Baking</h2>
+          <p class="lead">It all started in a tiny home kitchen with a simple mission: to create the perfect chocolate
+            chip cookie that would remind everyone of home.</p>
+          <p>What began as a weekend pop-up experiment quickly turned into a neighborhood obsession. We spent months
+            perfecting our dough, sourcing the richest European butter, and testing dozens of chocolate origins to find
+            the ideal melt-point.</p>
+          <div class="highlight-quote">
+            "Every cookie is a little piece of home."
+          </div>
+          <p>Today, Milk & Cookie Bar is more than just a bakery. it's a sanctuary for dessert lovers, a place where
+            warm bakes and cold milk flights create moments of pure, unadulterated joy.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. MISSION & VALUES -->
+  <section class="section-padding bg-warm">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="value-card-about">
+            <div class="value-icon-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" viewBox="0 0 16 16">
+                <path
+                  d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zM8.16 3.1a.5.5 0 0 0-.32 0l-2.125.708a.5.5 0 0 1-.315 0L3.3 3.1a.5.5 0 0 0-.6.6v1.4a.5.5 0 0 0 .144.35l1.6 1.6a.5.5 0 0 1 .156.35v1.4a.5.5 0 0 0 .144.35l1.6 1.6a.5.5 0 0 1 .156.35v1.4a.5.5 0 0 0 .144.35l1.6 1.6a.5.5 0 0 1 .156.35v1.4a.5.5 0 0 0 .144.35l1.6 1.6a.5.5 0 0 1 .156.35v1.4a.5.5 0 0 0 .856.35l1.6-1.6a.5.5 0 0 1 .156-.35v-1.4a.5.5 0 0 0-.144-.35L10.3 8.3a.5.5 0 0 1-.156-.35V6.55a.5.5 0 0 1 .156-.35l1.6-1.6A.5.5 0 0 0 12.056 4.25v-1.4a.5.5 0 0 0-.6-.6l-2.125.708a.5.5 0 0 1-.315 0L7.16 3.1z" />
+              </svg>
+            </div>
+            <h4>Quality Ingredients</h4>
+            <p>We never compromise on our core components. From organic farm milk to Belgian chocolate, only the best
+              makes the cut.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="value-card-about">
+            <div class="value-icon-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" viewBox="0 0 16 16">
+                <path
+                  d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a12.12 12.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+              </svg>
+            </div>
+            <h4>Made With Love</h4>
+            <p>Baking is personal for us. Each batch is mixed, scooped, and baked by hand with the same care we'd give
+              our own families.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="value-card-about">
+            <div class="value-icon-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                <path fill-rule="evenodd"
+                  d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z" />
+                <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
+              </svg>
+            </div>
+            <h4>Community First</h4>
+            <p>Our bakery is a hub for connection. We support local farmers and strive to be a positive force in our
+              neighborhood.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. OUR PROCESS -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="display-5">Bakery Behind the Scenes</h2>
+        <p class="text-muted">Take a look at how we craft your favorite treats.</p>
+      </div>
+
+      <div class="timeline-container">
+        <div class="timeline-line d-none d-md-block"></div>
+        <div class="row g-4">
+          <div class="col-md-3">
+            <div class="timeline-step">
+              <div class="step-circle-lg">1</div>
+              <h5 class="fw-bold">Source Local</h5>
+              <p class="small text-muted px-3">We partner with local farms for fresh eggs and organic dairy.</p>
+              <div class="step-img-placeholder">
+                <img src="assets/images/about-process.png" alt="Ingredients" class="w-100 h-100 object-fit-cover"
+                  style="object-position: top left;">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="timeline-step">
+              <div class="step-circle-lg">2</div>
+              <h5 class="fw-bold">Small Batches</h5>
+              <p class="small text-muted px-3">Mixing in limited quantities ensures consistent texture and flavor.</p>
+              <div class="step-img-placeholder">
+                <img src="assets/images/about-process.png" alt="Mixing" class="w-100 h-100 object-fit-cover"
+                  style="object-position: top right;">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="timeline-step">
+              <div class="step-circle-lg">3</div>
+              <h5 class="fw-bold">Bake to Order</h5>
+              <p class="small text-muted px-3">We keep our ovens running all day so your cookie is always warm.</p>
+              <div class="step-img-placeholder">
+                <img src="assets/images/about-process.png" alt="Baking" class="w-100 h-100 object-fit-cover"
+                  style="object-position: bottom left;">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="timeline-step">
+              <div class="step-circle-lg">4</div>
+              <h5 class="fw-bold">Package with Care</h5>
+              <p class="small text-muted px-3">Each box is hand-packed with our signature recycled wrap.</p>
+              <div class="step-img-placeholder">
+                <img src="assets/images/about-process.png" alt="Packaging" class="w-100 h-100 object-fit-cover"
+                  style="object-position: bottom right;">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. MEET THE TEAM -->
+  <section class="section-padding bg-warm">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="display-5">Meet the Bakers</h2>
+        <p class="text-muted">The passionate hands behind the flour.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-3 col-sm-6">
+          <div class="team-card-about">
+            <div class="team-avatar-lg">SJ</div>
+            <h4>Sarah Jenkins</h4>
+            <p class="text-accent small fw-bold">Founder & Head Baker</p>
+            <p class="small text-muted">Started MCB with her grandma's secret recipe and a lot of heart.</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+          <div class="team-card-about">
+            <div class="team-avatar-lg">MC</div>
+            <h4>Michael Chen</h4>
+            <p class="text-accent small fw-bold">Flavor Innovator</p>
+            <p class="small text-muted">A former pastry chef obsessed with finding the perfect chocolate pairings.</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+          <div class="team-card-about">
+            <div class="team-avatar-lg">AL</div>
+            <h4>Anna Lopez</h4>
+            <p class="text-accent small fw-bold">Milk Sommelier</p>
+            <p class="small text-muted">Curates our milk flights and develops our signature house-made oat milks.</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+          <div class="team-card-about">
+            <div class="team-avatar-lg">DB</div>
+            <h4>David Brown</h4>
+            <p class="text-accent small fw-bold">Operations Lead</p>
+            <p class="small text-muted">The wizard who ensures your cookies arrive warm and right on time.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <!-- 8. CATERING INTRO CTA -->
+  <section class="section-padding text-center">
+    <div class="container">
+      <h2 class="display-6 mb-4">Planning an Event? We've Got the Sweetest Solution.</h2>
+      <p class="text-muted mb-5 max-w-75 mx-auto">Whether it's a wedding, corporate meeting, or a birthday party, our
+        cookie bars and milk flights make every occasion memorable.</p>
+      <a href="pricing.html" class="btn btn-brand-primary btn-lg">View Catering Packages</a>
+    </div>
+  </section>
+
+  <!-- 9. TESTIMONIALS -->
+  <section class="section-padding bg-warm border-top border-bottom"
+    style="border-color: var(--mcb-surface-border) !important;">
+    <div class="container">
+      <h2 class="section-title">Loved by the Community</h2>
+      <div class="row g-4 mt-4">
+        <div class="col-md-4">
+          <div class="testimonial-card">
+            <div class="star-rating">★★★★★</div>
+            <p class="fst-italic mb-4">"Milk & Cookie Bar catered our wedding last June and it was the highlight of the
+              night. People still talk about the Nutella Lava cookies!"</p>
+            <div class="d-flex align-items-center gap-3">
+              <div class="avatar-circle">RW</div>
+              <div><strong class="d-block">Rebecca W.</strong><span class="small text-muted">Bride</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="testimonial-card">
+            <div class="star-rating">★★★★★</div>
+            <p class="fst-italic mb-4">"The commitment to quality is obvious. You can taste the difference that local
+              butter and organic milk make. It's my happy place."</p>
+            <div class="d-flex align-items-center gap-3">
+              <div class="avatar-circle">JP</div>
+              <div><strong class="d-block">James P.</strong><span class="small text-muted">Food Blogger</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="testimonial-card">
+            <div class="star-rating">★★★★★</div>
+            <p class="fst-italic mb-4">"I love their 'small batch' philosophy. Knowing that my cookies were baked just
+              for me makes the experience so much more special."</p>
+            <div class="d-flex align-items-center gap-3">
+              <div class="avatar-circle">MS</div>
+              <div><strong class="d-block">Maria S.</strong><span class="small text-muted">Local Regular</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-4 pe-lg-5">
+          <a href="index.html" class="footer-brand">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M12 2a10 10 0 1 0 10 10 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1zm-1.5 5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-3 6a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm6 3.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm2-6.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z" />
+            </svg>
+            Milk & Melt
+          </a>
+          <p class="mb-4">Crafting moments of comfort and joy through the timeless pairing of warm cookies and cold
+            milk. Baked with love, served with a smile.</p>
+          <div class="social-icons">
+            <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+                <path
+                  d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002z" />
+              </svg></a>
+            <a href="#" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                <path
+                  d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+              </svg></a>
+            <a href="#" aria-label="TikTok"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                fill="currentColor" class="bi bi-tiktok" viewBox="0 0 16 16">
+                <path
+                  d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z" />
+              </svg></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-6">
+          <h5>Menu</h5>
+          <ul>
+            <li><a href="signature-cookies.html">Signature Cookies</a></li>
+            <li><a href="milkshakes.html">Milkshakes</a></li>
+            <li><a href="menu.html">Dipping Sauces</a></li>
+            <li><a href="pricing.html">Catering</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-6">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="about.html">Our Story</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="blog.html">Journal</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <h5>Join the Club</h5>
+          <p>Subscribe for sweet updates, secret menu items, and 10% off your first order.</p>
+          <form class="newsletter-form d-flex gap-2 mt-3">
+            <input type="email" class="form-control" placeholder="Email address" required>
+            <button type="submit" class="btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2025 Milk & Melt. Made with love 🍪
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" aria-label="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-up"
+      viewBox="0 0 16 16">
+      <path fill-rule="evenodd"
+        d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
+    </svg>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>

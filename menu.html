@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full Menu | Milk & Melt</title>
+  <meta name="description"
+    content="Explore our full menu of artisan cookies, milk flights, and handcrafted dipping sauces. Pre-order online for pickup or delivery.">
+
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='%235A3825' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2a10 10 0 1 0 10 10 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1zm-1.5 5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-3 6a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm6 3.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm2-6.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z'/%3E%3C/svg%3E">
+  <link id="bootstrap-css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    /* MENU HERO & FILTERS */
+    .menu-hero {
+      padding: 160px 0 60px;
+      background-color: var(--mcb-bg-color);
+      text-align: center;
+      border-bottom: 1px solid var(--mcb-surface-border);
+    }
+
+    .filter-tabs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 2.5rem;
+    }
+
+    .filter-btn {
+      padding: 0.6rem 1.5rem;
+      border-radius: 50px;
+      border: 1px solid var(--mcb-surface-border);
+      background: var(--mcb-surface);
+      color: var(--mcb-text-color);
+      font-weight: 600;
+      transition: var(--mcb-transition);
+      cursor: pointer;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--mcb-primary);
+      color: var(--mcb-secondary);
+      border-color: var(--mcb-primary);
+    }
+
+    /* COOKIE MENU SECTION */
+    .menu-section {
+      padding: 60px 0;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .menu-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 3rem;
+    }
+
+    .menu-title-wrap h2 {
+      margin-bottom: 0;
+      white-space: nowrap;
+    }
+
+    .menu-title-wrap .line {
+      height: 2px;
+      background: var(--mcb-accent);
+      flex-grow: 1;
+      opacity: 0.3;
+    }
+
+    .dietary-legend {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 2rem;
+      font-size: 0.85rem;
+      color: var(--mcb-text-muted);
+    }
+
+    .diet-icon {
+      width: 20px;
+      height: 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      font-weight: 800;
+      font-size: 10px;
+      margin-right: 5px;
+    }
+
+    .bg-gf {
+      background: #E8D5C4;
+      color: #5A3825;
+    }
+
+    .bg-v {
+      background: #D1E7DD;
+      color: #0F5132;
+    }
+
+    .bg-nf {
+      background: #F8D7DA;
+      color: #842029;
+    }
+
+    .menu-list-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--mcb-surface-border);
+    }
+
+    .item-info {
+      flex-grow: 1;
+    }
+
+    .item-name {
+      font-family: var(--mcb-font-heading);
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .item-desc {
+      font-size: 0.9rem;
+      color: var(--mcb-text-muted);
+      margin-bottom: 0.5rem;
+      max-width: 80%;
+    }
+
+    .item-meta {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .item-price {
+      font-weight: 800;
+      color: var(--mcb-accent);
+      font-size: 1.1rem;
+    }
+
+    /* FLIGHT BUILDER */
+    .flight-builder-card {
+      background: var(--mcb-surface);
+      border: 1px solid var(--mcb-surface-border);
+      border-radius: 24px;
+      padding: 3rem;
+    }
+
+    .step-badge {
+      display: inline-block;
+      padding: 0.25rem 1rem;
+      background: var(--mcb-secondary);
+      color: var(--mcb-primary);
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .pill-selector {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .pill-item {
+      padding: 0.75rem 1.5rem;
+      border: 1px solid var(--mcb-surface-border);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: var(--mcb-transition);
+      font-weight: 600;
+    }
+
+    .pill-item:hover,
+    .pill-item.active {
+      border-color: var(--mcb-accent);
+      background: var(--mcb-secondary);
+    }
+
+    /* SAUCE CARDS */
+    .sauce-card {
+      background: var(--mcb-surface);
+      border: 1px solid var(--mcb-surface-border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      cursor: pointer;
+      transition: var(--mcb-transition);
+      height: 100%;
+      position: relative;
+    }
+
+    .sauce-card:hover {
+      border-color: var(--mcb-accent);
+      transform: translateY(-5px);
+    }
+
+    .sauce-card.active {
+      border-color: var(--mcb-primary);
+      background: var(--mcb-secondary);
+    }
+
+    .sauce-card.active::after {
+      content: "✓";
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-weight: bold;
+      color: var(--mcb-primary);
+    }
+
+    .selection-counter {
+      background: var(--mcb-primary);
+      color: white;
+      padding: 0.5rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 700;
+      display: inline-block;
+      margin-bottom: 2rem;
+    }
+
+    /* SHAKE CARDS */
+    .shake-card-simple {
+      background: var(--mcb-surface);
+      border: 1px solid var(--mcb-surface-border);
+      transition: var(--mcb-transition);
+    }
+    .shake-card-simple:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    }
+    [data-theme="dark"] .shake-card-simple {
+      background: #1A120B !important;
+      border-color: #2D241C !important;
+    }
+    [data-theme="dark"] .shake-card-simple h4 {
+      color: #F6E7D8 !important;
+    }
+
+    /* SEASONAL CARDS */
+    .special-card {
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--mcb-surface-border);
+      background: var(--mcb-surface);
+      height: 100%;
+      transition: var(--mcb-transition);
+    }
+    .special-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+    .special-img {
+      height: 220px;
+      overflow: hidden;
+    }
+    .special-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .special-badge {
+      background: var(--mcb-accent);
+      color: white;
+      padding: 0.2rem 0.8rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    /* CATERING */
+    .catering-card {
+      padding: 2.5rem;
+      border-radius: 24px;
+      background: var(--mcb-surface);
+      border: 1px solid var(--mcb-surface-border);
+      height: 100%;
+    }
+
+    .catering-featured {
+      border: 2px solid var(--mcb-primary);
+      transform: scale(1.05);
+      z-index: 2;
+    }
+
+    /* CTA BANNER */
+    .preorder-banner {
+      background: var(--mcb-secondary);
+      padding: 5rem 0;
+      border-radius: 30px;
+      margin: 4rem 0;
+    }
+
+    /* HIDE CLASS */
+    .section-hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand" href="index.html">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M12 2a10 10 0 1 0 10 10 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1zm-1.5 5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-3 6a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm6 3.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm2-6.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z" />
+        </svg>
+        Milk & Melt
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu"><span
+          class="navbar-toggler-icon"></span></button>
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title font-heading">Menu</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="#" id="homeDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Home
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="homeDropdown">
+                <li><a class="dropdown-item" href="index.html">Home 1</a></li>
+                <li><a class="dropdown-item" href="home2.html">Home 2</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link active" href="menu.html">Menus</a></li>
+            <li class="nav-item"><a class="nav-link" href="signature-cookies.html">Signature Cookies</a></li>
+            <li class="nav-item"><a class="nav-link" href="milkshakes.html">Milkshakes</a></li>
+            <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          </ul>
+          <div class="d-flex align-items-center flex-wrap gap-2">
+            <button id="rtlToggle" class="control-btn" title="Toggle RTL">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                <path d="M19 12H5M19 12l-4-4M19 12l-4 4M5 12l4-4M5 12l4 4" />
+              </svg>
+            </button>
+            <button id="themeToggle" class="control-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                fill="currentColor" width="20" height="20">
+                <path
+                  d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+              </svg></button>
+            <a href="signup.html" class="btn btn-brand-outline ms-lg-2">Sign Up</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 1. PAGE HERO -->
+  <header class="about-hero">
+    <div class="container">
+      <h1 class="display-3 mb-2">Our Full Menu</h1>
+      <p class="lead mb-0">Explore our handcrafted selection of artisan cookies, milk flights,</p>
+      <p class="lead">and signature shakes made fresh daily.</p>
+
+    </div>
+  </header>
+
+  <!-- 2. COOKIE MENU SECTION -->
+  <section id="cookiesSection" class="menu-section">
+    <div class="container">
+      <div class="menu-title-wrap">
+        <h2 class="display-5">Signature Cookie Menu</h2>
+        <div class="line"></div>
+      </div>
+
+      <div class="dietary-legend">
+        <span><span class="diet-icon bg-gf">GF</span> Gluten Free</span>
+        <span><span class="diet-icon bg-v">V</span> Vegan</span>
+        <span><span class="diet-icon bg-nf">NF</span> Nut Free</span>
+      </div>
+
+      <div class="row g-5">
+        <!-- Col 1 -->
+        <div class="col-lg-6">
+          <div class="menu-list-item">
+            <div class="item-info">
+              <div class="item-name">Classic Choco Chip <span class="diet-icon bg-nf">NF</span></div>
+              <p class="item-desc">Our original recipe with brown butter and 60% dark chocolate chunks.</p>
+              <div class="item-meta">
+                <span class="item-price">$4.50</span>
+                <button class="btn btn-sm btn-brand-outline px-3">Pre-Order</button>
+              </div>
+            </div>
+          </div>
+          <div class="menu-list-item">
+            <div class="item-info">
+              <div class="item-name">Double Fudge Brownie</div>
+              <p class="item-desc">Rich cocoa dough stuffed with soft chocolate fudge and dark chips.</p>
+              <div class="item-meta">
+                <span class="item-price">$4.75</span>
+                <button class="btn btn-sm btn-brand-outline px-3">Pre-Order</button>
+              </div>
+            </div>
+          </div>
+          <div class="menu-list-item">
+            <div class="item-info">
+              <div class="item-name">Brown Butter Toffee</div>
+              <p class="item-desc">Crunchy house-made toffee bits and sea salt flakes.</p>
+              <div class="item-meta">
+                <span class="item-price">$5.00</span>
+                <button class="btn btn-sm btn-brand-outline px-3">Pre-Order</button>
+              </div>
+            </div>
+          </div>
+          <div class="menu-list-item">
+            <div class="item-info">
+              <div class="item-name">Matcha White Choc <span class="diet-icon bg-gf">GF</span></div>
+              <p class="item-desc">Ceremonial grade matcha dough with creamy white chocolate buttons.</p>
+              <div class="item-meta">
+                <span class="item-price">$5.25</span>
+                <button class="btn btn-sm btn-brand-outline px-3">Pre-Order</button>
+              </div>
+            </div>
+          </div>
+          <div class="menu-list-item">
+            <div class="item-info">
+              <div class="item-name">Peanut Butter Crunch</div>
+              <p class="item-desc">Salted peanut butter dough with roasted nut clusters.</p>
+              <div class="item-meta">
+                <span class="item-price">$4.75</span>
+                <button class="btn btn-sm btn-brand-outline px-3">Pre-Order</button>
+              </div>
+            </div>
+          </div>
+          <div class="menu-list-item">
+            <div class="item-info">
+              <div class="item-name">Salted Caramel <span class="diet-icon bg-nf">NF</span></div>
+              <p class="item-desc">Toffee-like dough with a molten salted caramel center.</p>
+              <div class="item-meta">
+                <span class="item-price">$5.50</span>
+                <button class="btn btn-sm btn-brand-outline px-3">Pre-Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Col 2 -->
+        <div class="col-lg-6">
+          <div class="menu-list-item">
+            <div class="item-info">
+              <div class="item-name">Lemon Zest <span class="diet-icon bg-v">V</span></div>
+              <p class="item-desc">Zesty lemon-infused sugar cookie with a tart citrus glaze.</p>
+              <div class="item-meta">
+                <span class="item-price">$4.50</span>
+                <button class="btn btn-sm btn-brand-outline px-3">Pre-Order</button>
+              </div>
+            </div>
+          </div>
+          <div class="menu-list-item">
+            <div class="item-info">
+              <div class="item-name">Red Velvet <span class="diet-icon bg-nf">NF</span></div>
+              <p class="item-desc">Classic crimson cocoa dough with a cream cheese frosting swirl.</p>
+              <div class="item-meta">
+                <span class="item-price">$5.00</span>
+                <button class="btn btn-sm btn-brand-outline px-3">Pre-Order</button>
+              </div>
+            </div>
+          </div>
+          <div class="menu-list-item">
+            <div class="item-info">
+              <div class="item-name">Oatmeal Raisin <span class="diet-icon bg-nf">NF</span></div>
+              <p class="item-desc">Chewy cinnamon-spiced oats with plump vine-ripened raisins.</p>
+              <div class="item-meta">
+                <span class="item-price">$4.25</span>
+                <button class="btn btn-sm btn-brand-outline px-3">Pre-Order</button>
+              </div>
+            </div>
+          </div>
+          <div class="menu-list-item">
+            <div class="item-info">
+              <div class="item-name">Coconut Macaroon <span class="diet-icon bg-gf">GF</span></div>
+              <p class="item-desc">Toasted coconut flakes with a dark chocolate dipped base.</p>
+              <div class="item-meta">
+                <span class="item-price">$4.50</span>
+                <button class="btn btn-sm btn-brand-outline px-3">Pre-Order</button>
+              </div>
+            </div>
+          </div>
+          <div class="menu-list-item">
+            <div class="item-info">
+              <div class="item-name">Birthday Cake <span class="diet-icon bg-nf">NF</span></div>
+              <p class="item-desc">Funfetti-stuffed dough with vanilla bean glaze and sprinkles.</p>
+              <div class="item-meta">
+                <span class="item-price">$5.00</span>
+                <button class="btn btn-sm btn-brand-outline px-3">Pre-Order</button>
+              </div>
+            </div>
+          </div>
+          <div class="menu-list-item">
+            <div class="item-info">
+              <div class="item-name">Seasonal Special <span class="badge bg-accent small ms-2">ASK TODAY</span></div>
+              <p class="item-desc">Our monthly creative bake. Ask our staff for this month's flavour.</p>
+              <div class="item-meta">
+                <span class="item-price">$5.50</span>
+                <button class="btn btn-sm btn-brand-outline px-3">Pre-Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- 4. DIPPING SAUCE SELECTION -->
+  <section id="saucesSection" class="menu-section">
+    <div class="container">
+      <div class="menu-title-wrap">
+        <h2 class="display-5">Handcrafted Dipping Sauces</h2>
+        <div class="line"></div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="sauce-card" data-name="Chocolate Ganache">
+            <h5 class="mb-1">Choc Ganache</h5>
+            <p class="small text-muted mb-2">Rich & dark</p>
+            <span class="badge bg-nf small">NF</span>
+            <div class="mt-2 fw-bold text-accent">$2.00</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="sauce-card" data-name="Salted Caramel">
+            <h5 class="mb-1">Salted Caramel</h5>
+            <p class="small text-muted mb-2">Sweet & salty</p>
+            <span class="badge bg-nf small">NF</span>
+            <div class="mt-2 fw-bold text-accent">$2.00</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="sauce-card" data-name="Strawberry Compote">
+            <h5 class="mb-1">Strawberry</h5>
+            <p class="small text-muted mb-2">Fruity & bright</p>
+            <span class="badge bg-v small">V</span>
+            <div class="mt-2 fw-bold text-accent">$2.50</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="sauce-card" data-name="Peanut Butter">
+            <h5 class="mb-1">Peanut Butter</h5>
+            <p class="small text-muted mb-2">Creamy nuttiness</p>
+            <span class="badge bg-gf small">GF</span>
+            <div class="mt-2 fw-bold text-accent">$2.25</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="sauce-card" data-name="Nutella Swirl">
+            <h5 class="mb-1">Nutella Swirl</h5>
+            <p class="small text-muted mb-2">Hazelnut bliss</p>
+            <span class="badge bg-gf small">GF</span>
+            <div class="mt-2 fw-bold text-accent">$2.50</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="sauce-card" data-name="White Chocolate">
+            <h5 class="mb-1">White Choc</h5>
+            <p class="small text-muted mb-2">Smooth cream</p>
+            <span class="badge bg-nf small">NF</span>
+            <div class="mt-2 fw-bold text-accent">$2.25</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. MILKSHAKES MENU -->
+  <section id="shakesSection" class="menu-section">
+    <div class="container">
+      <div class="menu-title-wrap">
+        <h2 class="display-5">Signature Milkshakes</h2>
+        <div class="line"></div>
+      </div>
+
+      <div class="row g-4">
+        <!-- Shake 1 -->
+        <div class="col-lg-4 col-md-6">
+          <div class="shake-card-simple p-4 rounded-4 h-100">
+            <h4 class="font-heading mb-2">Classic Chocolate</h4>
+            <p class="text-muted small">Belgian dark chocolate, whole milk, whipped cream.</p>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <span class="fw-bold text-accent">$7.50</span>
+              <button class="btn btn-brand-outline btn-sm">Add to Pre-Order</button>
+            </div>
+          </div>
+        </div>
+        <!-- Shake 2 -->
+        <div class="col-lg-4 col-md-6">
+          <div class="shake-card-simple p-4 rounded-4 h-100">
+            <h4 class="font-heading mb-2">Vanilla Bean Dream</h4>
+            <p class="text-muted small">Madagascar vanilla, oat milk option available.</p>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <span class="fw-bold text-accent">$7.50</span>
+              <button class="btn btn-brand-outline btn-sm">Add to Pre-Order</button>
+            </div>
+          </div>
+        </div>
+        <!-- Shake 3 -->
+        <div class="col-lg-4 col-md-6">
+          <div class="shake-card-simple p-4 rounded-4 h-100">
+            <h4 class="font-heading mb-2">Strawberry Swirl</h4>
+            <p class="text-muted small">Fresh strawberries, cream, strawberry compote.</p>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <span class="fw-bold text-accent">$8.00</span>
+              <button class="btn btn-brand-outline btn-sm">Add to Pre-Order</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. SEASONAL SPECIALS -->
+  <section id="seasonalSection" class="menu-section bg-warm">
+    <div class="container">
+      <div class="menu-title-wrap">
+        <h2 class="display-5">Today's Seasonal Specials</h2>
+        <span class="badge bg-primary ms-3 px-3 py-2 rounded-pill">REFRESHED MONTHLY</span>
+        <div class="line"></div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="special-card">
+            <div class="special-img">
+              <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=600&q=80" alt="Pumpkin Spice Box">
+            </div>
+            <div class="p-4">
+              <span class="special-badge">Limited Time</span>
+              <h4 class="mt-3">Pumpkin Spice Box</h4>
+              <p class="text-muted small">A box of 4 warm pumpkin-infused snickerdoodles with maple glaze.</p>
+              <div class="d-flex justify-content-between align-items-center mt-4">
+                <span class="fw-bold fs-5 text-accent">$18.00</span>
+                <button class="btn btn-brand-primary btn-sm">Pre-Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="special-card">
+            <div class="special-img">
+              <img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?auto=format&fit=crop&w=600&q=80" alt="Ruby Velvet Hearts">
+            </div>
+            <div class="p-4">
+              <span class="special-badge">Valentine's Preview</span>
+              <h4 class="mt-3">Ruby Velvet Hearts</h4>
+              <p class="text-muted small">Naturally pink ruby chocolate with freeze-dried strawberry bits.</p>
+              <div class="d-flex justify-content-between align-items-center mt-4">
+                <span class="fw-bold fs-5 text-accent">$5.50</span>
+                <button class="btn btn-brand-primary btn-sm">Pre-Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="special-card">
+            <div class="special-img">
+              <img src="https://images.unsplash.com/photo-1621236304191-b54707198a28?auto=format&fit=crop&w=600&q=80" alt="Matcha Mint Cloud">
+            </div>
+            <div class="p-4">
+              <span class="special-badge">New Year Special</span>
+              <h4 class="mt-3">Matcha Mint Cloud</h4>
+              <p class="text-muted small">Refreshing mint-infused matcha dough with white chocolate fluff.</p>
+              <div class="d-flex justify-content-between align-items-center mt-4">
+                <span class="fw-bold fs-5 text-accent">$5.25</span>
+                <button class="btn btn-brand-primary btn-sm">Pre-Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. CATERING PACKAGES -->
+  <section id="cateringSection" class="menu-section">
+    <div class="container">
+      <div class="menu-title-wrap">
+        <h2 class="display-5">Catering Packages</h2>
+        <div class="line"></div>
+      </div>
+
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-4">
+          <div class="catering-card">
+            <h3 class="font-heading">Cookie Box</h3>
+            <div class="text-accent fw-bold fs-4 mb-3">$45.00</div>
+            <ul class="list-unstyled mb-4">
+              <li class="mb-2">✓ 12 Signature Cookies</li>
+              <li class="mb-2">✓ Assorted Flavours</li>
+              <li class="mb-2">✓ Gift Packaging</li>
+            </ul>
+            <p class="small text-muted mb-4">Lead time: 2 hours</p>
+            <button class="btn btn-brand-outline w-100">Request a Quote</button>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="catering-card catering-featured">
+            <div class="badge bg-primary mb-3">BEST SELLER</div>
+            <h3 class="font-heading">Party Pack</h3>
+            <div class="text-accent fw-bold fs-3 mb-3">$120.00</div>
+            <ul class="list-unstyled mb-4">
+              <li class="mb-2">✓ 36 Signature Cookies</li>
+              <li class="mb-2">✓ 4 Milk Bottles (Assorted)</li>
+              <li class="mb-2">✓ 3 Large Dipping Sauces</li>
+            </ul>
+            <p class="small text-muted mb-4">Lead time: 24 hours</p>
+            <button class="btn btn-brand-primary w-100">Request a Quote</button>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="catering-card">
+            <h3 class="font-heading">Full Event</h3>
+            <div class="text-accent fw-bold fs-4 mb-3">Custom</div>
+            <ul class="list-unstyled mb-4">
+              <li class="mb-2">✓ Unlimited Cookies & Milk</li>
+              <li class="mb-2">✓ On-site Baking Station</li>
+              <li class="mb-2">✓ Professional Staff</li>
+            </ul>
+            <p class="small text-muted mb-4">Lead time: 1 week</p>
+            <button class="btn btn-brand-outline w-100">Request a Quote</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. PRE-ORDER CTA BANNER -->
+  <div class="container mb-5">
+    <div class="preorder-banner text-center">
+      <h2 class="display-5 mb-4">Pre-Order Online and Skip the Queue</h2>
+      <div class="d-flex justify-content-center gap-3 flex-wrap">
+        <a href="contact.html" class="btn btn-brand-outline btn-lg px-5">Call to Order</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-4 pe-lg-5">
+          <a href="index.html" class="footer-brand">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M12 2a10 10 0 1 0 10 10 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1zm-1.5 5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-3 6a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm6 3.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm2-6.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z" />
+            </svg>
+            Milk & Melt
+          </a>
+          <p class="mb-4">Crafting moments of comfort and joy through the timeless pairing of warm cookies and cold
+            milk. Baked with love, served with a smile.</p>
+        </div>
+        <div class="col-lg-2 col-6">
+          <h5>Menu</h5>
+          <ul>
+            <li><a href="signature-cookies.html">Signature Cookies</a></li>
+            <li><a href="milkshakes.html">Milkshakes</a></li>
+            <li><a href="menu.html">Dipping Sauces</a></li>
+            <li><a href="pricing.html">Catering</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-6">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="about.html">Our Story</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="blog.html">Journal</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <h5>Join the Club</h5>
+          <p>Subscribe for sweet updates, secret menu items, and 10% off your first order.</p>
+          <form class="newsletter-form d-flex gap-2 mt-3">
+            <input type="email" class="form-control" placeholder="Email address" required>
+            <button type="submit" class="btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 Milk & Melt. Made with love 🍪
+      </div>
+    </div>
+  </footer>
+
+  <button id="backToTop" aria-label="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-up"
+      viewBox="0 0 16 16">
+      <path fill-rule="evenodd"
+        d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
+    </svg>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. FILTER LOGIC
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const sections = {
+        all: null,
+        cookies: document.getElementById('cookiesSection'),
+        shakes: document.getElementById('shakesSection'),
+        flights: document.getElementById('flightsSection'),
+        sauces: document.getElementById('saucesSection'),
+        seasonal: document.getElementById('seasonalSection'),
+        catering: document.getElementById('cateringSection')
+      };
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const filter = btn.getAttribute('data-filter');
+
+          // Update button state
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          // Show/Hide sections
+          Object.keys(sections).forEach(key => {
+            if (key === 'all') return;
+            if (filter === 'all' || filter === key) {
+              sections[key].classList.remove('section-hidden');
+            } else {
+              sections[key].classList.add('section-hidden');
+            }
+          });
+
+          // Scroll to top of content if not 'all'
+          if (filter !== 'all') {
+            window.scrollTo({
+              top: sections[filter].offsetTop - 100,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+
+      // 2. MILK BASE SELECTOR
+      const milkItems = document.querySelectorAll('#milkBaseSelector .pill-item');
+      milkItems.forEach(item => {
+        item.addEventListener('click', () => {
+          milkItems.forEach(i => i.classList.remove('active'));
+          item.classList.add('active');
+        });
+      });
+
+      // 3. SAUCE SELECTION COUNTER
+      const sauceCards = document.querySelectorAll('.sauce-card');
+      const counterEl = document.getElementById('sauceCounter');
+      let selectedSauces = 0;
+
+      sauceCards.forEach(card => {
+        card.addEventListener('click', () => {
+          if (card.classList.contains('active')) {
+            card.classList.remove('active');
+            selectedSauces--;
+          } else {
+            if (selectedSauces < 3) {
+              card.classList.add('active');
+              selectedSauces++;
+            } else {
+              alert('You can only select up to 3 sauces for your flight!');
+            }
+          }
+          counterEl.innerText = `${selectedSauces} of 3 selected`;
+        });
+      });
+
+      // 4. PRE-ORDER BUTTON FEEDBACK
+      const preOrderBtns = document.querySelectorAll('.btn-brand-outline, .btn-brand-primary');
+      preOrderBtns.forEach(btn => {
+        if (btn.innerText.includes('Pre-Order') || btn.innerText.includes('Add')) {
+          btn.addEventListener('click', (e) => {
+            if (btn.classList.contains('btn-lg')) return; // handled by catering or flight
+            e.stopPropagation();
+            const originalText = btn.innerText;
+            btn.innerText = 'Added! ✓';
+            btn.classList.add('bg-success', 'text-white', 'border-success');
+            setTimeout(() => {
+              btn.innerText = originalText;
+              btn.classList.remove('bg-success', 'text-white', 'border-success');
+            }, 1500);
+          });
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

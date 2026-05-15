@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Milk & Melt</title>
+  <meta name="description"
+    content="Get in touch with Milk & Cookie Bar for custom orders, catering enquiries, or just to say hi. Visit us in Chennai for the ultimate dessert experience.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='%235A3825' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2a10 10 0 1 0 10 10 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1zm-1.5 5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-3 6a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm6 3.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm2-6.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z'/%3E%3C/svg%3E">
+
+  <!-- Bootstrap & Global Styles -->
+  <link id="bootstrap-css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    .breadcrumb-custom {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--mcb-text-muted);
+      margin-top: 1.5rem;
+    }
+
+    .breadcrumb-custom a {
+      color: var(--mcb-text-muted);
+    }
+
+    .breadcrumb-custom span {
+      color: var(--mcb-accent);
+    }
+
+    /* Contact Info Styles */
+    .contact-info-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .contact-info-item {
+      display: flex;
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+      align-items: flex-start;
+    }
+
+    .contact-info-icon {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      background: var(--mcb-secondary);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--mcb-primary);
+    }
+
+    [data-theme="dark"] .contact-info-icon {
+      background: var(--mcb-primary);
+      color: var(--mcb-secondary);
+    }
+
+    .contact-info-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .contact-info-content h5 {
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .contact-info-content p {
+      margin-bottom: 0;
+      color: var(--mcb-text-muted);
+    }
+
+    /* Social Icons */
+    .social-links-contact {
+      display: flex;
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+
+    .social-icon-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--mcb-surface-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--mcb-text-color);
+      transition: var(--mcb-transition);
+      background: var(--mcb-surface);
+    }
+
+    .social-icon-btn:hover {
+      color: var(--mcb-accent) !important;
+      background: transparent !important;
+      transform: translateY(-3px);
+    }
+
+    /* Form Styles */
+    .contact-form-wrapper {
+      background: var(--mcb-surface);
+      border: 1px solid var(--mcb-surface-border);
+      border-radius: 24px;
+      padding: 3rem;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+    }
+
+    [data-theme="dark"] .contact-form-wrapper {
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-control {
+      height: 48px;
+      border-radius: 12px;
+      border: 1px solid var(--mcb-surface-border);
+      background: var(--mcb-bg-color);
+      padding: 0 1.25rem;
+      color: var(--mcb-text-color);
+    }
+
+    .form-control::placeholder {
+      color: var(--mcb-text-muted);
+      opacity: 0.7;
+    }
+
+    [data-theme="dark"] .form-control::placeholder {
+      color: rgba(246, 231, 216, 0.5);
+    }
+
+    textarea.form-control {
+      height: auto;
+      padding-top: 1rem;
+    }
+
+    .form-control:focus {
+      border-color: #5A3825;
+      box-shadow: none;
+      background: var(--mcb-surface);
+    }
+
+    [data-theme="dark"] .form-control:focus {
+      border-color: var(--mcb-accent);
+    }
+
+    .btn-submit {
+      height: 54px;
+      background-color: #5A3825;
+      color: #F6E7D8;
+      border-radius: 12px;
+      font-weight: 700;
+      width: 100%;
+      border: none;
+      transition: var(--mcb-transition);
+    }
+
+    .btn-submit:hover {
+      background-color: var(--mcb-accent);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* Map Section */
+    .map-section {
+      padding: 40px 0;
+    }
+
+    .map-wrapper {
+      height: 450px;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      background: #eee;
+      border: 1px solid var(--mcb-surface-border);
+    }
+
+    .map-placeholder {
+      width: 100%;
+      height: 100%;
+      background-color: var(--mcb-secondary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--mcb-primary);
+    }
+
+    [data-theme="dark"] .map-placeholder {
+      background-color: #2A1A10;
+      color: var(--mcb-secondary);
+    }
+
+    .map-pin-overlay {
+      background: #5A3825;
+      color: #fff;
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      margin-top: 1rem;
+    }
+
+    /* Catering Strip */
+    .catering-strip {
+      background: var(--mcb-primary);
+      padding: 3rem 0;
+      border-radius: 20px;
+      margin: 4rem 0;
+      color: #F6E7D8;
+    }
+
+    .catering-strip h2 {
+      color: #F6E7D8;
+      margin-bottom: 0;
+    }
+
+    .btn-catering {
+      background: var(--mcb-accent);
+      color: #fff;
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      font-weight: 700;
+    }
+
+    /* FAQ Accordion */
+    .faq-section {
+      padding: 60px 0 0;
+    }
+
+    .accordion-item {
+      background-color: var(--mcb-surface);
+      border: 1px solid var(--mcb-surface-border);
+      border-radius: 12px !important;
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+
+    .accordion-button {
+      background-color: var(--mcb-surface);
+      color: var(--mcb-text-color);
+      font-weight: 700;
+      padding: 1.25rem 1.5rem;
+      box-shadow: none !important;
+    }
+
+    .accordion-button:not(.collapsed) {
+      background-color: var(--mcb-secondary);
+      color: var(--mcb-primary);
+    }
+
+    [data-theme="dark"] .accordion-button:not(.collapsed) {
+      background-color: var(--mcb-primary);
+      color: var(--mcb-secondary);
+    }
+
+    .accordion-body {
+      color: var(--mcb-text-muted);
+      padding: 1.5rem;
+    }
+
+    /* Success Message */
+    #successMessage {
+      display: none;
+      background: #d4edda;
+      color: #155724;
+      padding: 1rem;
+      border-radius: 12px;
+      margin-top: 1rem;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    @media (max-width: 991.98px) {
+      .contact-form-wrapper {
+        padding: 2rem;
+        margin-top: 3rem;
+      }
+
+      .contact-hero {
+        padding: 120px 0 60px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand" href="index.html">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M12 2a10 10 0 1 0 10 10 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1zm-1.5 5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-3 6a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm6 3.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm2-6.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z" />
+        </svg>
+        <span>Milk & Melt</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu"
+        aria-controls="mobileMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title">Navigation</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="#" id="homeDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Home
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="homeDropdown">
+                <li><a class="dropdown-item" href="index.html">Home 1</a></li>
+                <li><a class="dropdown-item" href="home2.html">Home 2</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="menu.html">Menus</a></li>
+            <li class="nav-item"><a class="nav-link" href="signature-cookies.html">Signature Cookies</a></li>
+            <li class="nav-item"><a class="nav-link" href="milkshakes.html">Milkshakes</a></li>
+            <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+            <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+          </ul>
+
+          <div class="d-flex align-items-center gap-2 flex-wrap">
+            <button id="rtlToggle" class="control-btn" title="Toggle RTL">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                <path d="M19 12H5M19 12l-4-4M19 12l-4 4M5 12l4-4M5 12l4 4" />
+              </svg>
+            </button>
+            <button id="themeToggle" class="control-btn" title="Toggle Dark/Light Mode">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                <path
+                  d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+              </svg>
+            </button>
+            <a href="signup.html" class="btn btn-brand-outline ms-lg-2">Sign Up</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <header class="about-hero">
+    <div class="container">
+      <h1 class="display-3 mb-2">Get In Touch</h1>
+      <p class="lead mb-0">We'd love to hear from you — whether it's a custom order,</p>
+      <p class="lead">catering enquiry, or just to say hi to Milk & Melt.</p>
+    </div>
+  </header>
+
+  <!-- CONTACT CONTENT -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="row align-items-stretch">
+
+        <!-- Right Column: Form (First on Tablet/Mobile) -->
+        <div class="col-lg-7 order-1 order-lg-2">
+          <div class="contact-form-wrapper">
+            <h2 class="h1 fw-bold mb-4 text-center">Send Message</h2>
+            <form id="contactForm">
+              <div class="row g-3">
+                <div class="col-md-6 form-group">
+                  <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
+                </div>
+                <div class="col-md-6 form-group">
+                  <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
+                </div>
+                <div class="col-12 form-group">
+                  <input type="email" class="form-control" id="email" placeholder="Email Address" required>
+                </div>
+                <div class="col-12 form-group">
+                  <input type="text" class="form-control" id="companyName" placeholder="Company / Event Name">
+                </div>
+                <div class="col-12 form-group">
+                  <textarea class="form-control" id="message" rows="4" placeholder="How can we help?"
+                    required></textarea>
+                </div>
+                <div class="col-12 pt-2">
+                  <button type="submit" class="btn-submit">Send Message</button>
+                </div>
+              </div>
+            </form>
+            <div id="successMessage">
+              🍪 Fresh from the oven! Your message has been sent successfully. We'll get back to you soon!
+            </div>
+          </div>
+        </div>
+
+        <!-- Left Column: Info (Second on Tablet/Mobile) -->
+        <div class="col-lg-5 pe-lg-5 order-2 order-lg-1 mt-5 mt-lg-0">
+          <h2 class="h1 fw-bold mb-4">Let's Talk Cookies</h2>
+          <p class="mb-5">Our team is ready to help you with any questions about our ingredients, orders, or event
+            services.</p>
+
+          <div class="contact-info-list">
+            <div class="contact-info-item">
+              <div class="contact-info-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </div>
+              <div class="contact-info-content">
+                <h5>Our Location</h5>
+                <p>42 Baker Street, Nungambakkam<br>Chennai, Tamil Nadu - 600001</p>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-info-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+              </div>
+              <div class="contact-info-content">
+                <h5>Email Us</h5>
+                <p>hello@milkandmelt.com</p>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-info-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+              </div>
+              <div class="contact-info-content">
+                <h5>Call Us</h5>
+                <p>+91 98765 43210</p>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-info-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+              </div>
+              <div class="contact-info-content">
+                <h5>Opening Hours</h5>
+                <p>Mon–Sat 9am–9pm<br>Sun 10am–7pm</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="social-links-contact">
+            <a href="#" class="social-icon-btn" title="Instagram" style="border: none;"><svg viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+              </svg></a>
+            <a href="#" class="social-icon-btn" title="Facebook" style="border: none;"><svg viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+              </svg></a>
+            <a href="#" class="social-icon-btn" title="TikTok" style="border: none;"><svg viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+              </svg></a>
+            <a href="#" class="social-icon-btn" title="Pinterest" style="border: none;"><svg viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 16s1.5-1.5 1.5-5a3.5 3.5 0 1 0-7 0c0 3.5 1.5 5 1.5 5" />
+                <line x1="12" y1="8" x2="12" y2="16" />
+              </svg></a>
+            <a href="#" class="social-icon-btn" title="YouTube" style="border: none;"><svg viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2C1 8.14 1 12 1 12s0 3.86.42 5.58a2.78 2.78 0 0 0 1.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2C23 15.86 23 12 23 12s0-3.86-.42-5.58z" />
+                <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" />
+              </svg></a>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP SECTION -->
+  <section class="map-section">
+    <div class="container">
+      <div class="map-wrapper">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.657577559132!2d80.24151327572765!3d13.057440413000782!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52664057884d5f%3A0x6a06692f801a690e!2sNungambakkam%2C%20Chennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1715770000000!5m2!1sen!2sin"
+          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- FAQ SECTION -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="h1 fw-bold">Common Questions</h2>
+        <p class="text-muted">Quick answers to what our customers ask most</p>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="accordion" id="faqAccordion">
+            <!-- Item 1 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                  Can I customise my cookie box?
+                </button>
+              </h2>
+              <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Absolutely! You can mix and match any of our signature cookies to create your perfect box of 6 or 12.
+                  We also offer special seasonal selections.
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#faq2">
+                  How far in advance should I pre-order?
+                </button>
+              </h2>
+              <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  For regular orders, 24 hours in advance is ideal. For catering or large custom events, we recommend
+                  booking at least 1 week prior to ensure we can accommodate your request.
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#faq3">
+                  Do you offer delivery?
+                </button>
+              </h2>
+              <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Yes, we deliver within a 15km radius of our Chennai location. Delivery fees vary based on distance.
+                  You can also find us on major delivery apps.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row gy-5">
+        <div class="col-lg-4">
+          <a href="index.html" class="footer-brand">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M12 2a10 10 0 1 0 10 10 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1zm-1.5 5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-3 6a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm6 3.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm2-6.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z" />
+            </svg>
+            Milk & Melt
+          </a>
+          <p>Crafting moments of comfort and joy since 2015. Every cookie is baked fresh with the finest ingredients and
+            a touch of magic.</p>
+        </div>
+        <div class="col-lg-2 col-6 ms-lg-auto">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="about.html">Our Story</a></li>
+            <li><a href="menu.html">Menus</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-6">
+          <h5>Experience</h5>
+          <ul>
+            <li><a href="signature-cookies.html">Signature Cookies</a></li>
+            <li><a href="milkshakes.html">Milkshakes</a></li>
+            <li><a href="menu.html">Milk Flights</a></li>
+            <li><a href="about.html">Catering</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3">
+          <h5>Join the Club</h5>
+          <p class="small mb-3">Get exclusive offers and baking tips!</p>
+          <form class="newsletter-form d-flex gap-2">
+            <input type="email" class="form-control" placeholder="Email Address">
+            <button class="btn">Join</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Milk & Melt. All rights reserved. | <a href="#">Privacy Policy</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BACK TO TOP -->
+  <button id="backToTop" aria-label="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+      <path fill-rule="evenodd"
+        d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
+    </svg>
+  </button>
+
+  <!-- SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const contactForm = document.getElementById('contactForm');
+      const successMessage = document.getElementById('successMessage');
+
+      if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+
+          // Basic animation
+          const btn = contactForm.querySelector('button[type="submit"]');
+          const originalText = btn.innerText;
+          btn.disabled = true;
+          btn.innerText = 'Sending...';
+
+          setTimeout(() => {
+            contactForm.reset();
+            btn.disabled = false;
+            btn.innerText = originalText;
+            successMessage.style.display = 'block';
+
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+              successMessage.style.display = 'none';
+            }, 5000);
+          }, 1500);
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

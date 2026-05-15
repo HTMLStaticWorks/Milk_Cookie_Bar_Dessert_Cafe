@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Milk & Melt</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/auth.css">
+</head>
+<body>
+
+    <div class="top-controls">
+        <button id="rtlToggle" class="control-btn">RTL</button>
+        <button id="themeToggle" class="control-btn">
+            <svg class="theme-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                <path d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/>
+            </svg>
+        </button>
+    </div>
+
+    <div class="auth-wrapper">
+        <!-- Left Side: Decorative Background -->
+        <div class="auth-left">
+            <!-- Floating Cookie SVGs -->
+            <svg class="cookie-shape" style="left: 10%; width: 60px; height: 60px; animation-delay: 0s;" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1zm-1.5 5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-3 6a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm6 3.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm2-6.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"/></svg>
+            <svg class="cookie-shape" style="left: 30%; width: 40px; height: 40px; animation-delay: 5s;" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1zm-1.5 5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-3 6a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm6 3.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm2-6.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"/></svg>
+            <svg class="cookie-shape" style="left: 60%; width: 80px; height: 80px; animation-delay: 2s;" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1zm-1.5 5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-3 6a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm6 3.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm2-6.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"/></svg>
+            <svg class="cookie-shape" style="left: 80%; width: 50px; height: 50px; animation-delay: 8s;" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1zm-1.5 5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-3 6a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm6 3.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm2-6.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"/></svg>
+            
+            <div class="text-center" style="z-index: 2; color: #F6E7D8;">
+                <h1 class="font-heading" style="font-size: 3.5rem; margin-bottom: 1rem;">Indulgence Awaits</h1>
+                <p style="font-size: 1.2rem; opacity: 0.9;">Freshly baked happiness delivered to your door.</p>
+            </div>
+        </div>
+
+        <!-- Right Side: Login Form -->
+        <div class="auth-right">
+            <div class="auth-card">
+                <!-- 1. SVG Cookie Icon -->
+                <svg class="auth-logo" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2a10 10 0 1 0 10 10 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1zm-1.5 5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-3 6a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm6 3.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm2-6.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"/>
+                </svg>
+
+                <!-- 2. Brand Name -->
+                <h2 class="brand-name font-heading">Milk & Melt</h2>
+
+                <!-- 3. Welcome Message -->
+                <p class="welcome-msg">Welcome back, Cookie Lover!</p>
+
+                <form>
+                    <!-- 4. Email Input -->
+                    <div class="form-group">
+                        <div class="input-container">
+                            <input type="email" class="auth-input" placeholder="Email Address" required>
+                        </div>
+                    </div>
+
+                    <!-- 5. Password Input with Toggle -->
+                    <div class="form-group">
+                        <div class="input-container">
+                            <input type="password" id="loginPassword" class="auth-input" placeholder="Password" required>
+                            <button type="button" class="password-toggle" data-target="loginPassword">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 6. Options Row -->
+                    <div class="form-options">
+                        <label class="remember-me">
+                            <input type="checkbox"> Remember Me
+                        </label>
+                        <a href="#" class="forgot-link">Forgot Password?</a>
+                    </div>
+
+                    <!-- 7. Sign In Button -->
+                    <button type="submit" class="auth-btn">Sign In</button>
+
+                    <!-- 8. Divider -->
+                    <div class="divider">Or continue with</div>
+
+                    <!-- 9. Social Buttons Row -->
+                    <div class="social-row">
+                        <button type="button" class="social-btn">
+                            <img src="https://www.svgrepo.com/show/475656/google-color.svg" width="20" alt="G"> Google
+                        </button>
+                        <button type="button" class="social-btn">
+                            <img src="https://www.svgrepo.com/show/475647/facebook-color.svg" width="20" alt="f"> Facebook
+                        </button>
+                        <button type="button" class="social-btn">
+                            <img src="https://www.svgrepo.com/show/512333/apple.svg" width="20" alt="🍎"> Apple
+                        </button>
+                    </div>
+
+                    <!-- 10. Footer Link -->
+                    <p class="footer-link">Don't have an account? <a href="signup.html">Sign Up</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/auth.js"></script>
+</body>
+</html>

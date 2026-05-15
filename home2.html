@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editorial - Milk & Melt</title>
+  <meta name="description"
+    content="Indulge without apology. Handcrafted cookies, curated milk flights & decadent dipping sauces for special occasions with Milk & Melt.">
+
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='%23F6E7D8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2a10 10 0 1 0 10 10 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1zm-1.5 5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-3 6a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm6 3.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm2-6.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z'/%3E%3C/svg%3E">
+  <link id="bootstrap-css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand" href="index.html">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M12 2a10 10 0 1 0 10 10 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1zm-1.5 5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-3 6a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm6 3.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm2-6.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z" />
+        </svg>
+        Milk & Melt
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu"
+        aria-controls="mobileMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title font-heading" id="mobileMenuLabel">Menu</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link active" href="#" id="homeDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Home
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="homeDropdown">
+                <li><a class="dropdown-item" href="index.html">Home 1</a></li>
+                <li><a class="dropdown-item active" href="home2.html">Home 2</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="menu.html">Menus</a></li>
+            <li class="nav-item"><a class="nav-link" href="signature-cookies.html">Signature Cookies</a></li>
+            <li class="nav-item"><a class="nav-link" href="milkshakes.html">Milkshakes</a></li>
+            <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          </ul>
+          <div class="d-flex align-items-center flex-wrap gap-2">
+            <button id="rtlToggle" class="control-btn" title="Toggle RTL">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                <path d="M19 12H5M19 12l-4-4M19 12l-4 4M5 12l4-4M5 12l4 4" />
+              </svg>
+            </button>
+            <button id="themeToggle" class="control-btn" title="Toggle Theme">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                <!-- Moon icon since default is dark -->
+                <path
+                  d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+              </svg>
+            </button>
+            <a href="signup.html" class="btn btn-brand-outline ms-lg-2">Sign Up</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 1. FULL-SCREEN HERO -->
+  <section class="hero-editorial">
+    <!-- Floating Crumbs -->
+    <svg class="crumb-float" style="top: 20%; left: 10%;" width="16" height="16" viewBox="0 0 16 16" fill="#D4956A">
+      <circle cx="8" cy="8" r="8" />
+    </svg>
+    <svg class="crumb-float" style="top: 15%; right: 15%;" width="24" height="24" viewBox="0 0 24 24" fill="#5A3825">
+      <circle cx="12" cy="12" r="12" />
+    </svg>
+    <svg class="crumb-float" style="top: 60%; left: 5%;" width="12" height="12" viewBox="0 0 12 12" fill="#F6E7D8">
+      <circle cx="6" cy="6" r="6" />
+    </svg>
+    <svg class="crumb-float" style="top: 50%; right: 8%;" width="20" height="20" viewBox="0 0 20 20" fill="#D4956A">
+      <circle cx="10" cy="10" r="10" />
+    </svg>
+    <svg class="crumb-float" style="bottom: 30%; left: 20%;" width="18" height="18" viewBox="0 0 18 18" fill="#5A3825">
+      <circle cx="9" cy="9" r="9" />
+    </svg>
+    <svg class="crumb-float" style="bottom: 25%; right: 25%;" width="14" height="14" viewBox="0 0 14 14" fill="#F6E7D8">
+      <circle cx="7" cy="7" r="7" />
+    </svg>
+
+    <div class="container text-center flex-grow-1 d-flex flex-column justify-content-center" style="z-index: 2;">
+      <h1
+        style="font-size: clamp(3.5rem, 8vw, 6rem); line-height: 1; letter-spacing: -1px; margin-bottom: 1.5rem; color: #F6E7D8;">
+        INDULGE WITHOUT APOLOGY</h1>
+      <p class="lead max-w-75 mx-auto mb-5" style="color: #B39B8A;">Handcrafted cookies, curated milk flights &amp;
+        decadent dipping sauces.</p>
+      <div>
+        <a href="menu.html" class="btn btn-lg fw-bold"
+          style="background-color: #D4956A; color: #1C110A; padding: 1rem 3rem; border-radius: 8px;">Explore The
+          Menu</a>
+      </div>
+    </div>
+
+    <!-- 3-Image Strip -->
+    <div class="hero-image-strip">
+      <div class="strip-img"
+        style="background-image: url('https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=800&q=80');">
+      </div>
+      <div class="strip-img"
+        style="background-image: url('https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=800&q=80');">
+      </div>
+      <div class="strip-img"
+        style="background-image: url('https://images.unsplash.com/photo-1621236378699-8597faf6a176?auto=format&fit=crop&w=800&q=80'); border-right: none;">
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. PHILOSOPHY BLOCK -->
+  <section class="section-padding bg-warm">
+    <div class="container">
+      <!-- Row 1 -->
+      <div class="row align-items-center mb-5 pb-5">
+        <div class="col-lg-5 pe-lg-5 mb-4 mb-lg-0">
+          <div class="display-1 text-accent opacity-50 font-heading mb-3" style="line-height: 1;">01</div>
+          <h2 class="display-5 mb-4">Every Cookie Tells a Story</h2>
+          <p class="text-muted fs-5">We believe in the power of slow baking. Our dough rests for 48 hours to develop
+            deep caramel notes before being baked to order. No shortcuts, just pure craftsmanship in every bite.</p>
+        </div>
+        <div class="col-lg-7">
+          <div class="placeholder-rect position-relative overflow-hidden"
+            style="min-height: 500px; border-radius: 12px;">
+            <div class="position-absolute inset-0 bg-primary opacity-25 z-1"></div>
+            <img src="assets/images/about-story.png" alt="Baking Process"
+              class="position-absolute w-100 h-100 object-fit-cover">
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="row align-items-center flex-lg-row-reverse mb-5 pb-5">
+        <div class="col-lg-5 ps-lg-5 mb-4 mb-lg-0">
+          <div class="display-1 text-accent opacity-50 font-heading mb-3" style="line-height: 1;">02</div>
+          <h2 class="display-5 mb-4">The Milk Flight Experience</h2>
+          <p class="text-muted fs-5">A grown-up twist on a childhood favorite. Pair your warm cookies with a custom
+            tasting flight of our farm-fresh dairy or house-made oat milks. From strawberry to cereal-milk, the
+            combinations are endless.</p>
+        </div>
+        <div class="col-lg-7">
+          <div class="placeholder-rect position-relative overflow-hidden"
+            style="min-height: 500px; border-radius: 12px;">
+            <div class="position-absolute inset-0 bg-primary opacity-25 z-1"></div>
+            <img src="assets/images/about-process.png" alt="Milk Flight"
+              class="position-absolute w-100 h-100 object-fit-cover">
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 3 -->
+      <div class="row align-items-center">
+        <div class="col-lg-5 pe-lg-5 mb-4 mb-lg-0">
+          <div class="display-1 text-accent opacity-50 font-heading mb-3" style="line-height: 1;">03</div>
+          <h2 class="display-5 mb-4">Catering with Heart</h2>
+          <p class="text-muted fs-5">Elevate your next event with a premium dessert experience. From corporate
+            gatherings to elegant weddings, we bring the warmth of our bakery directly to your guests.</p>
+        </div>
+        <div class="col-lg-7">
+          <div class="placeholder-rect position-relative overflow-hidden"
+            style="min-height: 500px; border-radius: 12px;">
+            <div class="position-absolute inset-0 bg-primary opacity-25 z-1"></div>
+            <img src="assets/images/cookie.png" alt="Catering Spread"
+              class="position-absolute w-100 h-100 object-fit-cover">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <!-- 5. ONLINE PRE-ORDER BANNER -->
+  <section class="py-5"
+    style="background-color: #0D0805; border-top: 1px solid #3D2618; border-bottom: 1px solid #3D2618;">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-5 mb-4 mb-lg-0 text-center text-lg-start">
+          <h3 class="mb-2">Skip the Queue. Pre-Order Online.</h3>
+          <p class="text-muted mb-0">Your order is ready when you walk in.</p>
+        </div>
+        <div class="col-lg-7">
+          <form class="d-flex flex-column flex-md-row gap-3">
+            <input type="text" class="form-control bg-transparent text-white" placeholder="Name"
+              style="border-color: #3D2618;">
+            <input type="datetime-local" class="form-control bg-transparent text-white"
+              style="border-color: #3D2618; color-scheme: dark;">
+            <button type="button" class="btn btn-brand-primary text-nowrap px-4">Start My Order</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. MILK FLIGHT BUILDER -->
+  <section class="section-padding bg-warm">
+    <div class="container text-center">
+      <h2 class="display-4 mb-5">Design Your Perfect Flight</h2>
+
+      <div class="row g-4">
+        <!-- Step 1 -->
+        <div class="col-md-4">
+          <div class="flight-builder-step">
+            <div class="display-3 mb-3 text-accent">🥛</div>
+            <h4>1. Choose Milk Base</h4>
+            <p class="text-muted small">Select your foundation.</p>
+            <select aria-label="Milk Base">
+              <option>Farm-Fresh Whole Milk</option>
+              <option>House-Made Oat Milk</option>
+              <option>Almond Milk</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="col-md-4">
+          <div class="flight-builder-step">
+            <div class="display-3 mb-3 text-accent">🍪</div>
+            <h4>2. Select Cookies</h4>
+            <p class="text-muted small">Pick your pairing.</p>
+            <select aria-label="Cookies">
+              <option>Classic Chocolate Chip</option>
+              <option>Midnight Decadence</option>
+              <option>Brown Butter Pecan</option>
+              <option>Assorted Flight Box</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="col-md-4">
+          <div class="flight-builder-step">
+            <div class="display-3 mb-3 text-accent">🍯</div>
+            <h4>3. Pick 3 Sauces</h4>
+            <p class="text-muted small">Elevate the dunk.</p>
+            <select aria-label="Sauces">
+              <option>Ganache, Caramel, Strawberry</option>
+              <option>Peanut Butter, Nutella, Fluff</option>
+              <option>White Choc, Caramel, Ganache</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-5">
+        <button class="btn btn-brand-primary btn-lg px-5">Add Flight to Order</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. SEASONAL SPECIALS EDITORIAL ROW -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="seasonal-card">
+            <div class="seasonal-card-bg">
+              <img src="https://images.unsplash.com/photo-1514316454349-750a7fd3da3a?auto=format&fit=crop&w=600&q=80"
+                alt="Valentine's Day Box" class="w-100 h-100 object-fit-cover" style="opacity: 0.7;">
+            </div>
+            <div class="seasonal-card-content flex-column">
+              <h3 class="font-heading mb-2">Valentine's Day Box</h3>
+              <p class="small mb-3">Red velvet, dark chocolate, and strawberry dipping sauce.</p>
+              <a href="#" class="btn btn-sm btn-outline-light mt-auto">Order Special</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="seasonal-card">
+            <div class="seasonal-card-bg">
+              <img src="https://images.unsplash.com/photo-1607532941433-304659e8198a?auto=format&fit=crop&w=600&q=80"
+                alt="Holiday Cookie Tower" class="w-100 h-100 object-fit-cover" style="opacity: 0.7;">
+            </div>
+            <div class="seasonal-card-content flex-column">
+              <h3 class="font-heading mb-2">Holiday Cookie Tower</h3>
+              <p class="small mb-3">Gingerbread, peppermint mocha, and eggnog milk flight.</p>
+              <a href="#" class="btn btn-sm btn-outline-light mt-auto">Order Special</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="seasonal-card">
+            <div class="seasonal-card-bg">
+              <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=600&q=80"
+                alt="Birthday Bundle" class="w-100 h-100 object-fit-cover" style="opacity: 0.7;">
+            </div>
+            <div class="seasonal-card-content flex-column">
+              <h3 class="font-heading mb-2">Birthday Bundle</h3>
+              <p class="small mb-3">Funfetti sugar cookies, candle sparklers, and marshmallow fluff.</p>
+              <a href="#" class="btn btn-sm btn-outline-light mt-auto">Order Special</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- 10. FINAL CTA -->
+  <section class="section-padding border-top" style="padding: 0;">
+    <div class="d-flex flex-column flex-lg-row w-100">
+      <div class="split-cta-left flex-lg-grow-1 w-100">
+        <h2 class="display-5 mb-4">Ready for a Treat?</h2>
+        <a href="menu.html" class="btn btn-outline-light btn-lg">Pre-Order Online</a>
+      </div>
+      <div class="split-cta-right flex-lg-grow-1 w-100">
+        <h2 class="display-5 mb-4">Hosting an Event?</h2>
+        <a href="pricing.html" class="btn btn-brand-primary btn-lg">Plan a Catering Event</a>
+      </div>
+  </section>
+
+  <!-- 11. FOOTER -->
+  <footer class="site-footer mt-0 border-top" style="border-color: #3D2618 !important;">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-4 pe-lg-5">
+          <a href="index.html" class="footer-brand">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M12 2a10 10 0 1 0 10 10 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1zm-1.5 5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-3 6a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm6 3.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm2-6.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z" />
+            </svg>
+            Milk & Melt
+          </a>
+          <p class="mb-4">Crafting moments of comfort and joy through the timeless pairing of warm cookies and cold
+            milk. Baked with love, served with a smile.</p>
+          <div class="social-icons">
+            <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+                <path
+                  d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002z" />
+              </svg></a>
+            <a href="#" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                <path
+                  d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+              </svg></a>
+            <a href="#" aria-label="TikTok"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                fill="currentColor" class="bi bi-tiktok" viewBox="0 0 16 16">
+                <path
+                  d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z" />
+              </svg></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-6">
+          <h5>Menu</h5>
+          <ul>
+            <li><a href="signature-cookies.html">Signature Cookies</a></li>
+            <li><a href="milkshakes.html">Milkshakes</a></li>
+            <li><a href="menu.html">Dipping Sauces</a></li>
+            <li><a href="pricing.html">Catering</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-6">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="about.html">Our Story</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="blog.html">Journal</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <h5>Join the Club</h5>
+          <p>Subscribe for sweet updates, secret menu items, and 10% off your first order.</p>
+          <form class="newsletter-form d-flex gap-2 mt-3">
+            <input type="email" class="form-control" placeholder="Email address" required>
+            <button type="submit" class="btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2025 Milk & Melt. Made with love 🍪
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" aria-label="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-up"
+      viewBox="0 0 16 16">
+      <path fill-rule="evenodd"
+        d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
+    </svg>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Milkshakes & Flights | Milk & Melt</title>
+  <meta name="description"
+    content="Indulge in our thick handcrafted milkshakes and custom milk flights. The perfect companions for our signature cookies.">
+
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='%235A3825' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2a10 10 0 1 0 10 10 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1zm-1.5 5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-3 6a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm6 3.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm2-6.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z'/%3E%3C/svg%3E">
+  <link id="bootstrap-css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    .droplet {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: float 8s infinite ease-in-out;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0) translateX(0);
+      }
+
+      50% {
+        transform: translateY(-40px) translateX(20px);
+      }
+    }
+
+    /* MILKSHAKE CARDS */
+    .shake-card {
+      background: var(--mcb-surface);
+      border: 1px solid var(--mcb-surface-border);
+      border-radius: 24px;
+      padding: 1.5rem;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      transition: var(--mcb-transition);
+    }
+
+    .shake-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .shake-img-wrap {
+      width: 100%;
+      aspect-ratio: 0.8;
+      border-radius: 16px;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, var(--mcb-secondary), var(--mcb-surface-border));
+      overflow: hidden;
+    }
+
+    /* SIZE TOGGLE */
+    .size-toggle-wrap {
+      display: flex;
+      background: var(--mcb-secondary);
+      padding: 4px;
+      border-radius: 50px;
+      margin-bottom: 1rem;
+      width: fit-content;
+    }
+
+    .size-btn {
+      padding: 0.3rem 1rem;
+      border: none;
+      background: transparent;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--mcb-text-muted);
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .size-btn.active {
+      background: var(--mcb-primary);
+      color: white;
+    }
+
+    /* FLIGHT BUILDER */
+    .flight-experience {
+      background: var(--mcb-surface);
+      border: 1px solid var(--mcb-surface-border);
+      border-radius: 30px;
+      padding: 4rem;
+      margin-top: 3rem;
+    }
+
+    .summary-sidebar {
+      background: var(--mcb-secondary);
+      border-radius: 20px;
+      padding: 2rem;
+      height: 100%;
+      position: sticky;
+      top: 100px;
+    }
+
+    /* PAIRING GUIDE */
+    .pairing-card {
+      background: #F6E7D8;
+      /* Light warm */
+      padding: 2rem;
+      border-radius: 20px;
+      height: 100%;
+      border: 1px solid rgba(90, 56, 37, 0.1);
+    }
+
+    [data-theme="dark"] .pairing-card {
+      background: #2A1810;
+      /* Dark warm */
+      border-color: rgba(212, 149, 106, 0.1);
+    }
+
+    /* CATERING BANNER */
+    .catering-drinks-banner {
+      background: var(--mcb-primary);
+      color: var(--mcb-secondary);
+      padding: 4rem;
+      border-radius: 30px;
+      margin: 5rem 0;
+      text-align: center;
+    }
+
+    /* Dark Mode Overrides for Milkshakes */
+    [data-theme="dark"] .size-toggle-wrap {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    [data-theme="dark"] .size-btn {
+      color: rgba(246, 231, 216, 0.6);
+    }
+
+    [data-theme="dark"] .size-btn.active {
+      background: var(--mcb-accent);
+      color: #1C110A;
+    }
+
+    [data-theme="dark"] .catering-drinks-banner {
+      background: var(--mcb-surface-border);
+      color: var(--mcb-text-color);
+    }
+
+    [data-theme="dark"] .catering-drinks-banner h2,
+    [data-theme="dark"] .catering-drinks-banner p {
+      color: var(--mcb-text-color) !important;
+    }
+
+    .catering-drinks-banner .btn-brand-outline {
+      border-color: var(--mcb-secondary) !important;
+      color: var(--mcb-secondary) !important;
+    }
+
+    .catering-drinks-banner .btn-brand-outline:hover {
+      background: var(--mcb-secondary) !important;
+      color: var(--mcb-primary) !important;
+    }
+
+    [data-theme="dark"] .catering-drinks-banner .btn-brand-outline {
+      border-color: var(--mcb-accent) !important;
+      color: var(--mcb-accent) !important;
+    }
+
+    [data-theme="dark"] .catering-drinks-banner .btn-brand-outline:hover {
+      background: var(--mcb-accent) !important;
+      color: var(--mcb-bg-color) !important;
+    }
+
+    .form-control::placeholder {
+      color: var(--mcb-text-muted);
+      opacity: 0.7;
+    }
+
+    [data-theme="dark"] .form-control::placeholder {
+      color: rgba(246, 231, 216, 0.5);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand" href="index.html">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M12 2a10 10 0 1 0 10 10 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1zm-1.5 5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-3 6a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm6 3.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm2-6.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z" />
+        </svg>
+        Milk & Melt
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu"><span
+          class="navbar-toggler-icon"></span></button>
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title font-heading">Menu</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="#" id="homeDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Home
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="homeDropdown">
+                <li><a class="dropdown-item" href="index.html">Home 1</a></li>
+                <li><a class="dropdown-item" href="home2.html">Home 2</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="menu.html">Menus</a></li>
+            <li class="nav-item"><a class="nav-link" href="signature-cookies.html">Signature Cookies</a></li>
+            <li class="nav-item"><a class="nav-link active" href="milkshakes.html">Milkshakes</a></li>
+            <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          </ul>
+          <div class="d-flex align-items-center flex-wrap gap-2">
+            <button id="rtlToggle" class="control-btn" title="Toggle RTL">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                <path d="M19 12H5M19 12l-4-4M19 12l-4 4M5 12l4-4M5 12l4 4" />
+              </svg>
+            </button>
+            <button id="themeToggle" class="control-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                fill="currentColor" width="20" height="20">
+                <path
+                  d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+              </svg></button>
+            <a href="signup.html" class="btn btn-brand-outline ms-lg-2">Sign Up</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 1. PAGE HERO -->
+  <header class="about-hero">
+    <div class="container">
+      <h1 class="display-3 mb-2">Milkshakes & Milk Flights</h1>
+      <p class="lead mb-0">Thick, creamy, handcrafted milkshakes & curated milk flights</p>
+      <p class="lead">for the ultimate dipping experience at Milk & Melt.</p>
+    </div>
+  </header>
+
+  <!-- 2. MILKSHAKES MENU -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="row g-4">
+
+        <!-- Shake 1: Classic Chocolate -->
+        <div class="col-lg-4 col-md-6">
+          <div class="shake-card">
+            <div class="shake-img-wrap">
+              <img src="assets/images/milkshake1.jpg" alt="Classic Chocolate" class="w-100 h-100 object-fit-cover">
+            </div>
+            <h3 class="font-heading h4">Classic Chocolate</h3>
+            <p class="text-muted small">Belgian dark chocolate, whole milk, whipped cream.</p>
+            <div class="size-toggle-wrap mt-auto">
+              <button class="size-btn active" data-price-reg="7.50" data-price-large="9.50"
+                data-size="reg">Regular</button>
+              <button class="size-btn" data-size="large">Large</button>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <span class="fw-bold fs-5 text-accent shake-price">$7.50</span>
+              <button class="btn btn-brand-primary btn-sm">Pre-Order</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Shake 2: Birthday Cake Shake -->
+        <div class="col-lg-4 col-md-6">
+          <div class="shake-card">
+            <div class="shake-img-wrap">
+              <img src="assets/images/milkshake4.jpg" alt="Birthday Cake Shake" class="w-100 h-100 object-fit-cover">
+            </div>
+            <h3 class="font-heading h4">Birthday Cake Shake</h3>
+            <p class="text-muted small">Vanilla, sprinkles, cotton candy cloud topping.</p>
+            <div class="size-toggle-wrap mt-auto">
+              <button class="size-btn active" data-price-reg="8.00" data-price-large="10.00"
+                data-size="reg">Regular</button>
+              <button class="size-btn" data-size="large">Large</button>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <span class="fw-bold fs-5 text-accent shake-price">$8.00</span>
+              <button class="btn btn-brand-primary btn-sm">Pre-Order</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Shake 3: Peanut Butter Blast -->
+        <div class="col-lg-4 col-md-6">
+          <div class="shake-card">
+            <div class="shake-img-wrap">
+              <img src="assets/images/milkshake2.jpg" alt="Peanut Butter Blast" class="w-100 h-100 object-fit-cover">
+            </div>
+            <h3 class="font-heading h4">Peanut Butter Blast</h3>
+            <p class="text-muted small">Creamy PB, banana, dark chocolate drizzle.</p>
+            <div class="size-toggle-wrap mt-auto">
+              <button class="size-btn active" data-price-reg="8.50" data-price-large="10.50"
+                data-size="reg">Regular</button>
+              <button class="size-btn" data-size="large">Large</button>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <span class="fw-bold fs-5 text-accent shake-price">$8.50</span>
+              <button class="btn btn-brand-primary btn-sm">Pre-Order</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Shake 4: Salted Caramel Crunch -->
+        <div class="col-lg-4 col-md-6">
+          <div class="shake-card">
+            <div class="shake-img-wrap">
+              <img src="assets/images/milkshake3.jpg" alt="Salted Caramel Crunch" class="w-100 h-100 object-fit-cover">
+            </div>
+            <h3 class="font-heading h4">Salted Caramel Crunch</h3>
+            <p class="text-muted small">House caramel sauce, pretzel crumble top.</p>
+            <div class="size-toggle-wrap mt-auto">
+              <button class="size-btn active" data-price-reg="8.00" data-price-large="10.00"
+                data-size="reg">Regular</button>
+              <button class="size-btn" data-size="large">Large</button>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <span class="fw-bold fs-5 text-accent shake-price">$8.00</span>
+              <button class="btn btn-brand-primary btn-sm">Pre-Order</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Shake 5: Matcha Ceremony -->
+        <div class="col-lg-4 col-md-6">
+          <div class="shake-card">
+            <div class="shake-img-wrap">
+              <img src="assets/images/milkshake5.jpg" alt="Matcha Ceremony" class="w-100 h-100 object-fit-cover">
+            </div>
+            <h3 class="font-heading h4">Matcha Ceremony</h3>
+            <p class="text-muted small">Japanese ceremonial matcha, oat milk.</p>
+            <div class="size-toggle-wrap mt-auto">
+              <button class="size-btn active" data-price-reg="8.50" data-price-large="10.50"
+                data-size="reg">Regular</button>
+              <button class="size-btn" data-size="large">Large</button>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <span class="fw-bold fs-5 text-accent shake-price">$8.50</span>
+              <button class="btn btn-brand-primary btn-sm">Pre-Order</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Shake 6: Cookie Butter Shake -->
+        <div class="col-lg-4 col-md-6">
+          <div class="shake-card">
+            <div class="shake-img-wrap">
+              <img src="assets/images/milkshake6.jpg" alt="Cookie Butter Shake" class="w-100 h-100 object-fit-cover">
+            </div>
+            <h3 class="font-heading h4">Cookie Butter Shake</h3>
+            <p class="text-muted small">Speculoos-spiced, brown butter base.</p>
+            <div class="size-toggle-wrap mt-auto">
+              <button class="size-btn active" data-price-reg="8.50" data-price-large="10.50"
+                data-size="reg">Regular</button>
+              <button class="size-btn" data-size="large">Large</button>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <span class="fw-bold fs-5 text-accent shake-price">$8.50</span>
+              <button class="btn btn-brand-primary btn-sm">Pre-Order</button>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. MILK FLIGHTS SECTION -->
+  <section class="section-padding bg-warm">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="display-5">The Milk Flight Experience</h2>
+        <p class="text-muted max-w-75 mx-auto">Taste our curated collection of artisanal milks, paired perfectly with
+          our signature bakes.</p>
+      </div>
+
+      <div class="flight-experience">
+        <div class="row g-5">
+          <div class="col-lg-8">
+            <!-- Step 1 -->
+            <div class="mb-5">
+              <h4 class="font-heading mb-4">1. Choose Milk Base</h4>
+              <div class="d-flex flex-wrap gap-2" id="milkBaseSelector">
+                <button class="btn btn-brand-outline active" data-val="Whole">Whole Milk</button>
+                <button class="btn btn-brand-outline" data-val="Oat">Oat Milk</button>
+                <button class="btn btn-brand-outline" data-val="Almond">Almond Milk</button>
+                <button class="btn btn-brand-outline" data-val="Chocolate">Chocolate Milk</button>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="mb-5">
+              <h4 class="font-heading mb-4">2. Pick Your Cookies (Choose 3)</h4>
+              <div class="row g-3">
+                <div class="col-md-4">
+                  <div class="p-3 border rounded-4 text-center cursor-pointer cookie-tile" data-name="Choco Chip">
+                    <div class="small fw-bold">Choco Chip</div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="p-3 border rounded-4 text-center cursor-pointer cookie-tile" data-name="Red Velvet">
+                    <div class="small fw-bold">Red Velvet</div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="p-3 border rounded-4 text-center cursor-pointer cookie-tile" data-name="Birthday Cake">
+                    <div class="small fw-bold">Birthday Cake</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div>
+              <h4 class="font-heading mb-4">3. Pick 3 Dipping Sauces</h4>
+              <div class="d-flex flex-wrap gap-2" id="sauceSelector">
+                <button class="btn btn-sm btn-brand-outline" data-val="Ganache">Chocolate Ganache</button>
+                <button class="btn btn-sm btn-brand-outline" data-val="Caramel">Salted Caramel</button>
+                <button class="btn btn-sm btn-brand-outline" data-val="Strawberry">Strawberry</button>
+                <button class="btn btn-sm btn-brand-outline" data-val="PB">Peanut Butter</button>
+                <button class="btn btn-sm btn-brand-outline" data-val="Nutella">Nutella Swirl</button>
+                <button class="btn btn-sm btn-brand-outline" data-val="White">White Chocolate</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="summary-sidebar">
+              <h4 class="font-heading mb-4">Your Flight</h4>
+              <div id="flightSummary">
+                <div class="mb-3"><small class="text-muted d-block">Milk Base:</small> <span id="sumMilk">Whole
+                    Milk</span></div>
+                <div class="mb-3"><small class="text-muted d-block">Cookies:</small> <span id="sumCookies">None
+                    selected</span></div>
+                <div class="mb-4"><small class="text-muted d-block">Sauces:</small> <span id="sumSauces">None
+                    selected</span></div>
+                <hr>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                  <strong>Total:</strong> <span class="fw-bold fs-4 text-accent">$12.00</span>
+                </div>
+                <button class="btn btn-brand-primary w-100">Add Flight to Pre-Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. DIPPING SAUCES PAIRING GUIDE -->
+  <section class="section-padding">
+    <div class="container">
+      <h2 class="section-title text-center mb-5">What Goes with What?</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="pairing-card">
+            <h5>Chocolate Ganache</h5>
+            <p class="small opacity-75">Pairs best with:</p>
+            <ul class="small mb-0">
+              <li>Birthday Cake Confetti</li>
+              <li>Red Velvet Cream</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="pairing-card">
+            <h5>Salted Caramel</h5>
+            <p class="small opacity-75">Pairs best with:</p>
+            <ul class="small mb-0">
+              <li>Brown Butter Toffee</li>
+              <li>Oatmeal Raisin</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="pairing-card">
+            <h5>Strawberry Compote</h5>
+            <p class="small opacity-75">Pairs best with:</p>
+            <ul class="small mb-0">
+              <li>Lemon Glazed Zest</li>
+              <li>White Chocolate Macadamia</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- 6. CATERING BANNER -->
+  <div class="container">
+    <div class="catering-drinks-banner">
+      <h2 class="display-5 mb-3" style="color: #fff;">Adding drinks to your catering order?</h2>
+      <p class="lead mb-4">We deliver milk flight kits with insulated carriers to keep everything cold.</p>
+      <a href="contact.html" class="btn btn-brand-outline btn-lg">Request Catering Quote</a>
+    </div>
+  </div>
+
+
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-4 pe-lg-5">
+          <a href="index.html" class="footer-brand">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M12 2a10 10 0 1 0 10 10 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1 3 3 0 0 1-3-3 1 1 0 0 0-1-1zm-1.5 5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-3 6a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm6 3.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm2-6.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z" />
+            </svg>
+            Milk & Melt
+          </a>
+          <p class="mb-4">Crafting moments of comfort and joy.</p>
+        </div>
+        <div class="col-lg-2 col-6">
+          <h5>Menu</h5>
+          <ul>
+            <li><a href="signature-cookies.html">Signature Cookies</a></li>
+            <li><a href="milkshakes.html">Milkshakes</a></li>
+            <li><a href="menu.html">Dipping Sauces</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-6">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="about.html">Our Story</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <h5>Join the Club</h5>
+          <form class="newsletter-form d-flex gap-2 mt-3">
+            <input type="email" class="form-control" placeholder="Email address" required>
+            <button type="submit" class="btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">&copy; 2026 Milk & Melt. Made with love 🍪</div>
+    </div>
+  </footer>
+
+  <button id="backToTop" aria-label="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+      <path fill-rule="evenodd"
+        d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
+    </svg>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. SHAKE SIZE TOGGLE
+      const shakeCards = document.querySelectorAll('.shake-card');
+      shakeCards.forEach(card => {
+        const btns = card.querySelectorAll('.size-btn');
+        const priceDisplay = card.querySelector('.shake-price');
+
+        btns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            btns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const regPrice = card.querySelector('.size-btn[data-price-reg]').getAttribute('data-price-reg');
+            const largePrice = card.querySelector('.size-btn[data-price-reg]').getAttribute('data-price-large');
+
+            if (btn.getAttribute('data-size') === 'reg') {
+              priceDisplay.innerText = `$${regPrice}`;
+            } else {
+              priceDisplay.innerText = `$${largePrice}`;
+            }
+          });
+        });
+      });
+
+      // 2. FLIGHT BUILDER
+      const milkBtns = document.querySelectorAll('#milkBaseSelector .btn');
+      const cookieTiles = document.querySelectorAll('.cookie-tile');
+      const sauceBtns = document.querySelectorAll('#sauceSelector .btn');
+
+      const sumMilk = document.getElementById('sumMilk');
+      const sumCookies = document.getElementById('sumCookies');
+      const sumSauces = document.getElementById('sumSauces');
+
+      let selectedCookies = [];
+      let selectedSauces = [];
+
+      // Milk selection
+      milkBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          milkBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          sumMilk.innerText = btn.innerText;
+        });
+      });
+
+      // Cookie selection (max 3)
+      cookieTiles.forEach(tile => {
+        tile.addEventListener('click', () => {
+          const name = tile.getAttribute('data-name');
+          if (tile.classList.contains('active')) {
+            tile.classList.remove('active');
+            selectedCookies = selectedCookies.filter(c => c !== name);
+          } else {
+            if (selectedCookies.length < 3) {
+              tile.classList.add('active');
+              selectedCookies.push(name);
+            } else {
+              alert('Pick up to 3 cookies for your flight!');
+            }
+          }
+          sumCookies.innerText = selectedCookies.length > 0 ? selectedCookies.join(', ') : 'None selected';
+        });
+      });
+
+      // Sauce selection (max 3)
+      sauceBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const name = btn.innerText;
+          if (btn.classList.contains('active')) {
+            btn.classList.remove('active');
+            selectedSauces = selectedSauces.filter(s => s !== name);
+          } else {
+            if (selectedSauces.length < 3) {
+              btn.classList.add('active');
+              selectedSauces.push(name);
+            } else {
+              alert('Pick up to 3 sauces for your flight!');
+            }
+          }
+          sumSauces.innerText = selectedSauces.length > 0 ? selectedSauces.join(', ') : 'None selected';
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
