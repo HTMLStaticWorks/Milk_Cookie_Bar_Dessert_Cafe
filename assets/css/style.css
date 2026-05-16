@@ -1368,7 +1368,8 @@ a:hover {
 
 /* Split CTA Section */
 .split-cta-left {
-  color: var(--mcb-secondary);
+  background-color: #1C110A;
+  color: #F6E7D8;
   padding: 6rem 2rem;
   display: flex;
   flex-direction: column;
@@ -1391,6 +1392,21 @@ a:hover {
 [data-theme="dark"] .split-cta-right {
   background-color: var(--mcb-surface);
   color: var(--mcb-text-color);
+}
+
+.btn-hero-editorial {
+  background-color: #D4956A;
+  color: #1C110A !important;
+  padding: 1rem 3rem;
+  border-radius: 8px;
+  transition: var(--mcb-transition);
+}
+
+.btn-hero-editorial:hover {
+  background-color: #F6E7D8;
+  color: #1C110A !important;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* --- PRICING PAGE SPECIFIC --- */
