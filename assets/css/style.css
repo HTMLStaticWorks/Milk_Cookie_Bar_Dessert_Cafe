@@ -37,6 +37,8 @@
 
   /* Transitions */
   --mcb-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+  --mcb-hero-overlay: rgba(255, 250, 245, 0.82);
 }
 
 /* Dark Mode Overrides */
@@ -59,6 +61,8 @@
   --mcb-nav-text: #F6E7D8;
   --mcb-footer-bg: #0D0805;
   --mcb-footer-text: #F6E7D8;
+
+  --mcb-hero-overlay: rgba(28, 17, 10, 0.85);
 }
 
 /* --- GLOBAL STYLES --- */
@@ -168,6 +172,8 @@ a:hover {
 .about-hero {
   padding: 160px 0 100px;
   background-color: var(--mcb-secondary);
+  background-size: cover;
+  background-position: center;
   position: relative;
   overflow: hidden;
   text-align: center;
@@ -222,6 +228,7 @@ a:hover {
   background-color: var(--mcb-nav-bg);
   transition: background-color 0.4s ease, box-shadow 0.3s ease;
   padding: 1rem 0;
+  z-index: 1050 !important;
 }
 
 .navbar.scrolled {
@@ -798,7 +805,9 @@ a:hover {
   align-items: center;
   overflow: hidden;
   background-color: var(--mcb-bg-color);
-  background-image: radial-gradient(circle at center, var(--mcb-secondary) 0%, var(--mcb-bg-color) 70%);
+  background-image: linear-gradient(var(--mcb-hero-overlay), var(--mcb-hero-overlay)), url('../images/hero-bg.png');
+  background-size: cover;
+  background-position: center;
 }
 
 [data-theme="dark"] .hero-home-1 {
@@ -959,10 +968,27 @@ a:hover {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
-.cookie-card .placeholder-circle {
-  width: 150px;
-  height: 150px;
-  margin: 0 auto 1.5rem;
+.cookie-card-img-wrap {
+  width: calc(100% + 3rem);
+  margin: -1.5rem -1.5rem 1.5rem -1.5rem;
+  border-radius: 22px 22px 0 0;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 4/3;
+}
+
+.cookie-card-img-wrap img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.cookie-card:hover .cookie-card-img-wrap img {
+  transform: scale(1.05);
 }
 
 .cookie-tags {
@@ -1004,14 +1030,7 @@ a:hover {
 }
 
 .step-container::before {
-  content: '';
-  position: absolute;
-  top: 30px;
-  left: 10%;
-  right: 10%;
-  height: 2px;
-  border-top: 2px dashed var(--mcb-surface-border);
-  z-index: 0;
+  display: none;
 }
 
 .step-item {
@@ -1120,6 +1139,9 @@ a:hover {
 
 .hero-editorial {
   background-color: #1C110A;
+  background-image: linear-gradient(rgba(28, 17, 10, 0.8), rgba(28, 17, 10, 0.8)), url('../images/gallery-hero.png');
+  background-size: cover;
+  background-position: center;
   color: #F6E7D8;
   min-height: 100vh;
   display: flex;
@@ -1288,11 +1310,22 @@ a:hover {
   background: rgba(0, 0, 0, 0.6);
   color: #fff;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 2rem;
+  padding: 2.5rem 2rem;
   transition: var(--mcb-transition);
+}
+
+
+.seasonal-card-content p {
+  margin-bottom: auto;
+}
+
+.seasonal-card-content .btn-premium-editorial {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .seasonal-card:hover .seasonal-card-content {
@@ -1779,4 +1812,194 @@ a:hover {
 
 .form-control-dark::-moz-placeholder {
   color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* --- HERO BACKGROUND IMAGES (PAGE THEMES) --- */
+.hero-about {
+  background-image: linear-gradient(var(--mcb-hero-overlay), var(--mcb-hero-overlay)), url('../images/about-story.png') !important;
+}
+
+.hero-menu {
+  background-image: linear-gradient(var(--mcb-hero-overlay), var(--mcb-hero-overlay)), url('../images/cooking.jpg') !important;
+}
+
+.hero-cookies {
+  background-image: linear-gradient(var(--mcb-hero-overlay), var(--mcb-hero-overlay)), url('../images/signature1.jpg') !important;
+}
+
+.hero-milkshakes {
+  background-image: linear-gradient(var(--mcb-hero-overlay), var(--mcb-hero-overlay)), url('../images/milk.png') !important;
+}
+
+.hero-pricing {
+  background-image: linear-gradient(var(--mcb-hero-overlay), var(--mcb-hero-overlay)), url('../images/tower.png') !important;
+}
+
+.hero-gallery {
+  background-image: linear-gradient(var(--mcb-hero-overlay), var(--mcb-hero-overlay)), url('../images/gallery-hero.png') !important;
+}
+
+.hero-blog {
+  background-image: linear-gradient(var(--mcb-hero-overlay), var(--mcb-hero-overlay)), url('../images/special1.jpg') !important;
+}
+
+.hero-contact {
+  background-image: linear-gradient(var(--mcb-hero-overlay), var(--mcb-hero-overlay)), url('../images/abt1.jpg') !important;
+}
+
+/* =====================================================
+   RESPONSIVE FIXES
+   ===================================================== */
+
+/* Fix 1: 360px – Home1 hero circle overflow below text */
+@media (max-width: 400px) {
+  .hero-home-1 .placeholder-circle {
+    max-width: 260px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-home-1 .col-lg-6.mt-5 {
+    margin-top: 2rem !important;
+  }
+
+  .hero-home-1 .position-relative.mx-auto {
+    max-width: 260px !important;
+  }
+
+  .rotating-badge {
+    width: 90px;
+    height: 90px;
+    font-size: 0.7rem;
+    top: -10px;
+    right: -10px;
+  }
+}
+
+/* Fix 2: 360px – Navbar toggler & brand alignment + keep it fixed */
+@media (max-width: 576px) {
+
+  /* Force navbar to stay fixed at top on all small screens */
+  .navbar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 1030 !important;
+    background-color: var(--mcb-nav-bg) !important;
+    padding: 0.6rem 0;
+  }
+
+  .navbar .container-fluid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+
+  .navbar-brand {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .navbar-brand svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .navbar-toggler {
+    flex-shrink: 0;
+    padding: 0.35rem 0.5rem;
+    margin-left: auto;
+  }
+
+  /* Sync body top padding with the fixed navbar height */
+  body {
+    padding-top: 75px !important;
+  }
+
+  /* Compensate about-hero / menu-hero top padding on mobile */
+  .about-hero {
+    padding-top: 120px;
+  }
+}
+
+/* Fix 3: 1024px – Home2 "Add Flight to Order" CTA alignment & Spacing for Seasonal Cards & Fixed Navbar Padding */
+@media (max-width: 1024.98px) {
+  .flight-builder-step {
+    text-align: center;
+  }
+
+  section .mt-5 .btn-brand-primary.btn-lg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .seasonal-card {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  /* Ensure body has room for the fixed navbar on all tablet/mobile sizes */
+  body {
+    padding-top: 75px !important;
+  }
+
+  /* Robust mobile navbar stickiness – works on About & Menu pages */
+  .navbar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 1050 !important;
+    background-color: var(--mcb-nav-bg) !important;
+    width: 100% !important;
+  }
+
+  /* About & Menu hero: push content below fixed navbar */
+  .about-hero {
+    padding-top: 130px;
+  }
+}
+
+@media (min-width: 1025px) {
+  body {
+    padding-top: 0;
+  }
+
+  /* Clear desktop hero section image from fixed navbar */
+  .hero-home-1 {
+    padding-top: 90px;
+  }
+
+  .hero-home-1 .position-relative.mx-auto {
+    margin-top: 40px;
+  }
+}
+
+/* Unified styling for flight builder and dietary info images */
+.flight-step-img-wrap,
+.diet-card-img-wrap {
+  width: 100%;
+  height: 220px; /* Fixed height for uniformity */
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 1.5rem; /* Generous space between image and heading */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  background-color: var(--mcb-secondary);
+}
+
+.flight-step-img-wrap img,
+.diet-card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+/* Micro-animation hover zoom effect */
+.flight-builder-step:hover .flight-step-img-wrap img,
+.mcb-card:hover .diet-card-img-wrap img {
+  transform: scale(1.05);
 }
