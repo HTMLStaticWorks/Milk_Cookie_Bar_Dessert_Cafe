@@ -66,12 +66,13 @@
 }
 
 /* --- GLOBAL STYLES --- */
-body {
+html, body {
   font-family: var(--mcb-font-body);
   background-color: var(--mcb-bg-color);
   color: var(--mcb-text-color);
   transition: background-color 0.4s ease, color 0.4s ease;
   overflow-x: hidden;
+  max-width: 100%;
 }
 
 h1,
